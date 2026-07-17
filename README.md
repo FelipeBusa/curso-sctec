@@ -3,9 +3,13 @@ Objetivo é treinar e pensar como Analista de Dados, aprendendo a ler os código
 
 ├── Semana02 - for, while, if, elif, else
 │   ├── Desafios
-│   ├── Exemplos
 │   ├── Mini Projetos
+│   ├── Correções/ Exemplos
 ├── Semana03 - Lista/ Tupla/ Dicionário
 │   ├── Desafios
 │   ├── Mini Projetos
-└── Correções
+│   └── Correções/ Exemplos
+├── Semana04 - 
+│   ├── Desafios
+│   ├── Mini Projetos
+└── └── Correções/ Exemplos
