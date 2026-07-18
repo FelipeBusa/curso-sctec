@@ -125,6 +125,6 @@ Após a conclusão do curso, os principais projetos serão disponibilizados em r
 
 Estudante de Análise de Dados com Python
 
-Professor [Claudio Ferreira Neves] (https://github.com/cfneves) - [SCTEC] (https://sctec.scti.sc.gov.br/)
+Professor [Claudio Ferreira Neves](https://github.com/cfneves) - [SCTEC](https://sctec.scti.sc.gov.br/)
 
 📍 Joinville - SC - Brasil
