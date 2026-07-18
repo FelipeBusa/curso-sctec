@@ -26,16 +26,13 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 
 | Semana | Conteúdo | Status |
 |---------|----------|:------:|
-| 01 | Fundamentos da Linguagem | ✅ |
-| 02 | Estruturas Condicionais e Repetição (`if`, `elif`, `else`, `for`, `while`) | ✅ |
-| 03 | Listas, Tuplas e Dicionários | 🔄 Em andamento |
-| 04 | Em breve... | ⏳ |
-| 05 | Em breve... | ⏳ |
-| 06 | Em breve... | ⏳ |
-| 07 | Em breve... | ⏳ |
-| 08 | Em breve... | ⏳ |
-| 09 | Em breve... | ⏳ |
-| 10 | Em breve... | ⏳ |
+| 01 | Introdução e Fundamentos da Análise de Dados | ✅ |
+| 02 | Lógica de Programação | ✅ |
+| 03 | Versionamento e Python Local | ✅ |
+| 04 | Manipulação de Arquivos e Modularização | 🔄 Em andamento |
+| 05 | Bibliotecas Pandas e NumPy | ⏳ |
+| 06 | Limpeza e Transformação de Dados | ⏳ |
+| 07 | Visualização e Pipelines | ⏳ |
 
 ---
 
@@ -43,22 +40,34 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 
 ```text
 .
-├── 📂 Semana01 - Fundamentos
+├── 📂 Semana01 - Introdução e Fundamentos da Análise de Dados
 │
-├── 📂 Semana02 - Estruturas Condicionais e Repetição
-│   ├── 📁 Exercícios de Fixação
+├── 📂 Semana02 - Lógica de Programação (Estruturas Condicionais e Repetição)
 │   ├── 📁 Desafios
 │   ├── 📁 Mini Projetos
 │   └── 📁 Correções e Exemplos
 │
-├── 📂 Semana03 - Listas, Tuplas e Dicionários
-│   ├── 📁 Exercícios de Fixação
+├── 📂 Semana03 - Versionamento e Python Local (Listas, Tuplas e Dicionários)
 │   ├── 📁 Desafios
 │   ├── 📁 Mini Projetos
 │   └── 📁 Correções e Exemplos
 │
-├── 📂 Semana04
-│   ├── 📁 Exercícios de Fixação
+├── 📂 Semana04 - Manipulção de Arquivos e Modularização
+│   ├── 📁 Desafios
+│   ├── 📁 Mini Projetos
+│   └── 📁 Correções e Exemplos
+│
+├── 📂 Semana05 - Bibliotecas Pandas e NumPy
+│   ├── 📁 Desafios
+│   ├── 📁 Mini Projetos
+│   └── 📁 Correções e Exemplos
+│
+├── 📂 Semana06 - Limpeza e Transformação de Dados
+│   ├── 📁 Desafios
+│   ├── 📁 Mini Projetos
+│   └── 📁 Correções e Exemplos
+│
+├── 📂 Semana07 - Visualização e Pipeline
 │   ├── 📁 Desafios
 │   ├── 📁 Mini Projetos
 │   └── 📁 Correções e Exemplos
@@ -95,7 +104,7 @@ Durante o desenvolvimento dos exercícios procuro seguir um processo semelhante 
 
 | Item | Quantidade |
 |------|-----------:|
-| 📁 Semanas concluídas | 2 |
+| 📁 Semanas concluídas | 3 |
 | 📝 Exercícios resolvidos | Em atualização |
 | 💡 Desafios concluídos | Em atualização |
 | 🚀 Mini Projetos | Em atualização |
@@ -115,5 +124,7 @@ Após a conclusão do curso, os principais projetos serão disponibilizados em r
 **Felipe Busarello**
 
 Estudante de Análise de Dados com Python
+
+Professor [Claudio Ferreira Neves] (https://github.com/cfneves) - [SCTEC] (https://sctec.scti.sc.gov.br/)
 
 📍 Joinville - SC - Brasil
