@@ -44,33 +44,27 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 │
 ├── 📂 Semana02 - Lógica de Programação (Estruturas Condicionais e Repetição)
 │   ├── 📁 Desafios
-│   ├── 📁 Mini Projetos
-│   └── 📁 Correções e Exemplos
+│   └── 📁 Mini Projetos
 │
 ├── 📂 Semana03 - Versionamento e Python Local (Listas, Tuplas e Dicionários)
 │   ├── 📁 Desafios
-│   ├── 📁 Mini Projetos
-│   └── 📁 Correções e Exemplos
+│   └── 📁 Mini Projetos
 │
 ├── 📂 Semana04 - Manipulção de Arquivos e Modularização
 │   ├── 📁 Desafios
-│   ├── 📁 Mini Projetos
-│   └── 📁 Correções e Exemplos
+│   └── 📁 Mini Projetos
 │
 ├── 📂 Semana05 - Bibliotecas Pandas e NumPy
 │   ├── 📁 Desafios
-│   ├── 📁 Mini Projetos
-│   └── 📁 Correções e Exemplos
+│   └── 📁 Mini Projetos
 │
 ├── 📂 Semana06 - Limpeza e Transformação de Dados
 │   ├── 📁 Desafios
-│   ├── 📁 Mini Projetos
-│   └── 📁 Correções e Exemplos
+│   └── 📁 Mini Projetos
 │
 ├── 📂 Semana07 - Visualização e Pipeline
 │   ├── 📁 Desafios
-│   ├── 📁 Mini Projetos
-│   └── 📁 Correções e Exemplos
+│   └── 📁 Mini Projetos
 │
 └── README.md
 ```
@@ -105,9 +99,8 @@ Durante o desenvolvimento dos exercícios procuro seguir um processo semelhante 
 | Item | Quantidade |
 |------|-----------:|
 | 📁 Semanas concluídas | 3 |
-| 📝 Exercícios resolvidos | Em atualização |
-| 💡 Desafios concluídos | Em atualização |
-| 🚀 Mini Projetos | Em atualização |
+| 💡 Desafios concluídos | 10 de 20 |
+| 🚀 Mini Projetos | 4 de 7 |
 
 ---
 
