@@ -29,8 +29,8 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 | 01 | Introdução e Fundamentos da Análise de Dados | ✅ |
 | 02 | Lógica de Programação | ✅ |
 | 03 | Versionamento e Python Local | ✅ |
-| 04 | Manipulação de Arquivos e Modularização | 🔄 Em andamento |
-| 05 | Bibliotecas Pandas e NumPy | ⏳ |
+| 04 | Manipulação de Arquivos e Modularização | ✅ |
+| 05 | Bibliotecas Pandas e NumPy | 🔄 Em andamento  |
 | 06 | Limpeza e Transformação de Dados | ⏳ |
 | 07 | Visualização e Pipelines | ⏳ |
 
@@ -98,9 +98,9 @@ Durante o desenvolvimento dos exercícios procuro seguir um processo semelhante 
 
 | Item | Quantidade |
 |------|-----------:|
-| 📁 Semanas concluídas | 3 |
-| 💡 Desafios concluídos | 10 de 20 |
-| 🚀 Mini Projetos | 4 de 7 |
+| 📁 Semanas concluídas | 4 |
+| 💡 Desafios concluídos | 33 de 34 |
+| 🚀 Mini Projetos | 8 de 11 |
 
 ---
 
