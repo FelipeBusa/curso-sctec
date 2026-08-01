@@ -30,8 +30,8 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 | 02 | Lógica de Programação | ✅ |
 | 03 | Versionamento e Python Local | ✅ |
 | 04 | Manipulação de Arquivos e Modularização | ✅ |
-| 05 | Bibliotecas Pandas e NumPy | 🔄 Em andamento  |
-| 06 | Limpeza e Transformação de Dados | ⏳ |
+| 05 | Bibliotecas Pandas e NumPy | ✅ |
+| 06 | Limpeza e Transformação de Dados | 🔄 Em andamento |
 | 07 | Visualização e Pipelines | ⏳ |
 
 ---
@@ -55,6 +55,7 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 │   └── 📁 Mini Projetos
 │
 ├── 📂 Semana05 - Bibliotecas Pandas e NumPy
+│   ├── 📁 Resumo
 │   ├── 📁 Desafios
 │   └── 📁 Mini Projetos
 │
