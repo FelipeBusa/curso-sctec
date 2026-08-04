@@ -43,14 +43,17 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 ├── 📂 Semana01 - Introdução e Fundamentos da Análise de Dados
 │
 ├── 📂 Semana02 - Lógica de Programação (Estruturas Condicionais e Repetição)
+│   ├── 📁 Resumo
 │   ├── 📁 Desafios
 │   └── 📁 Mini Projetos
 │
 ├── 📂 Semana03 - Versionamento e Python Local (Listas, Tuplas e Dicionários)
+│   ├── 📁 Resumo
 │   ├── 📁 Desafios
 │   └── 📁 Mini Projetos
 │
 ├── 📂 Semana04 - Manipulção de Arquivos e Modularização
+│   ├── 📁 Resumo
 │   ├── 📁 Desafios
 │   └── 📁 Mini Projetos
 │
@@ -60,10 +63,12 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 │   └── 📁 Mini Projetos
 │
 ├── 📂 Semana06 - Limpeza e Transformação de Dados
+│   ├── 📁 Resumo
 │   ├── 📁 Desafios
 │   └── 📁 Mini Projetos
 │
 ├── 📂 Semana07 - Visualização e Pipeline
+│   ├── 📁 Resumo
 │   ├── 📁 Desafios
 │   └── 📁 Mini Projetos
 │
