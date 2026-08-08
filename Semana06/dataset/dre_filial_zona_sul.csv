@@ -1,0 +1,26 @@
+categoria,tipo,mes,valor
+Receita de Vendas,Receita,Jan,38000
+Impostos sobre Vendas,Despesa,Jan,3800
+CMV,Despesa,Jan,11000
+Despesas com Pessoal,Despesa,Jan,10500
+Despesas Administrativas,Despesa,Jan,2800
+Despesas Financeiras,Despesa,Jan,
+Receita de Vendas,Receita,Fev,36000
+Impostos sobre Vendas,Despesa,Fev,3600
+CMV,Despesa,Fev,
+Despesas com Pessoal,Despesa,Fev,105000
+Despesas Administrativas,Despesa,Fev,2700
+Despesas Financeiras,Despesa,Fev,680
+Receita de Vendas,Receita,Mar,40000
+Impostos sobre Vendas,Despesa,Mar,4000
+CMV,Despesa,Mar,11800
+Despesas com Pessoal,Despesa,Mar,10800
+Despesas Administrativas,Despesa,Mar,
+Despesas Financeiras,Despesa,Mar,720
+Receita de Vendas,Receita,Abr,41000
+Impostos sobre Vendas,Despesa,Abr,
+CMV,Despesa,Abr,12000
+Despesas com Pessoal,Despesa,Abr,10800
+Despesas Administrativas,Despesa,Abr,3000
+Despesas Financeiras,Despesa,Abr,750
+Receita de Vendas,Receita,Fev,36000
