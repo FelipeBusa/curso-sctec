@@ -31,8 +31,8 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 | 03 | Versionamento e Python Local | ✅ |
 | 04 | Manipulação de Arquivos e Modularização | ✅ |
 | 05 | Bibliotecas Pandas e NumPy | ✅ |
-| 06 | Limpeza e Transformação de Dados | 🔄 Em andamento |
-| 07 | Visualização e Pipelines | ⏳ |
+| 06 | Limpeza e Transformação de Dados | ✅ |
+| 07 | Visualização e Pipelines | 🔄 Em andamento |
 
 ---
 
@@ -42,35 +42,46 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 .
 ├── 📂 Semana01 - Introdução e Fundamentos da Análise de Dados
 │
-├── 📂 Semana02 - Lógica de Programação (Estruturas Condicionais e Repetição)
-│   ├── 📁 Resumo
-│   ├── 📁 Desafios
-│   └── 📁 Mini Projetos
+├── 📂 Semana02 - Lógica de Programação
+│   ├── 📄 Resumo.md
+│   ├── 📓 Desafios.ipynb
+│   └── 📓 Mini Projetos.ipynb
 │
-├── 📂 Semana03 - Versionamento e Python Local (Listas, Tuplas e Dicionários)
-│   ├── 📁 Resumo
-│   ├── 📁 Desafios
-│   └── 📁 Mini Projetos
+├── 📂 Semana03 - Versionamento e Python Local
+│   ├── 📄 Resumo.md
+│   ├── 📓 Desafios.ipynb
+│   └── 📓 Mini Projetos.ipynb
 │
-├── 📂 Semana04 - Manipulção de Arquivos e Modularização
-│   ├── 📁 Resumo
-│   ├── 📁 Desafios
-│   └── 📁 Mini Projetos
+├── 📂 Semana04 - Manipulação de Arquivos e Modularização
+│   ├── 📂 Dataset
+│   │   ├── 📄 cadastro_funcionario.csv
+│   │   ├── 📄 dashboard_rh.json
+│   │   ├── 📄 emails_corporativos.json
+│   │   ├── 📄 funcionarios_estoque.csv
+│   │   └── 📊 recursos_humanos.xlsx
+│   ├── 📄 Resumo.md
+│   ├── 📓 Desafios.ipynb
+│   └── 📓 Mini Projetos.ipynb
 │
 ├── 📂 Semana05 - Bibliotecas Pandas e NumPy
-│   ├── 📁 Resumo
-│   ├── 📁 Desafios
-│   └── 📁 Mini Projetos
+│   ├── 📂 Dataset
+│   │   ├── 📄 cadastro_funcionario.csv
+│   │   ├── 📄 emails_corporativos.json
+│   │   ├── 📄 funcionarios_estoque.csv
+│   │   └── 📊 recursos_humanos.xlsx
+│   ├── 📄 Resumo.md
+│   ├── 📓 Desafios.ipynb
+│   └── 📓 Mini Projetos.ipynb
 │
 ├── 📂 Semana06 - Limpeza e Transformação de Dados
-│   ├── 📁 Resumo
-│   ├── 📁 Desafios
-│   └── 📁 Mini Projetos
+│   ├── 📄 Resumo.md
+│   ├── 📓 Desafios.ipynb
+│   └── 📓 Mini Projetos.ipynb
 │
 ├── 📂 Semana07 - Visualização e Pipeline
-│   ├── 📁 Resumo
-│   ├── 📁 Desafios
-│   └── 📁 Mini Projetos
+│   ├── 📄 Resumo.md
+│   ├── 📓 Desafios.ipynb
+│   └── 📓 Mini Projetos.ipynb
 │
 └── README.md
 ```
@@ -104,7 +115,7 @@ Durante o desenvolvimento dos exercícios procuro seguir um processo semelhante 
 
 | Item | Quantidade |
 |------|-----------:|
-| 📁 Semanas concluídas | 4 |
+| 📁 Semanas concluídas | 6 |
 | 💡 Desafios concluídos | 33 de 34 |
 | 🚀 Mini Projetos | 8 de 11 |
 
