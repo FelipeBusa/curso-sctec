@@ -1,0 +1,74 @@
+{
+    "total_funcionarios": 30,
+    "funcionarios_por_setor": {
+        "Comercial": 8,
+        "Logística": 10,
+        "Estoque": 9,
+        "RH": 3
+    },
+    "funcionarios_por_cargo": {
+        "Atendente": 7,
+        "Motorista": 9,
+        "Separador de Estoque": 7,
+        "Analista de RH": 1,
+        "Supervisora": 3,
+        "Auxiliar Adm.": 2,
+        "Auxiliar de Estoque": 1
+    },
+    "ranking_setores": [
+        {
+            "setor": "Logística",
+            "quantidade": 10
+        },
+        {
+            "setor": "Estoque",
+            "quantidade": 9
+        },
+        {
+            "setor": "Comercial",
+            "quantidade": 8
+        },
+        {
+            "setor": "RH",
+            "quantidade": 3
+        }
+    ],
+    "ranking_cargos": [
+        {
+            "cargo": "Motorista",
+            "quantidade": 9
+        },
+        {
+            "cargo": "Atendente",
+            "quantidade": 7
+        },
+        {
+            "cargo": "Separador de Estoque",
+            "quantidade": 7
+        },
+        {
+            "cargo": "Supervisora",
+            "quantidade": 3
+        },
+        {
+            "cargo": "Auxiliar Adm.",
+            "quantidade": 2
+        },
+        {
+            "cargo": "Analista de RH",
+            "quantidade": 1
+        },
+        {
+            "cargo": "Auxiliar de Estoque",
+            "quantidade": 1
+        }
+    ],
+    "setor_destaque": {
+        "setor": "Logística",
+        "quantidade": 10
+    },
+    "cargo_destaque": {
+        "cargo": "Motorista",
+        "quantidade": 9
+    }
+}
