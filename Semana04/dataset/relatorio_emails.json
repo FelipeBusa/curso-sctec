@@ -1,0 +1,12 @@
+{
+    "total_emails": 30,
+    "email_validos": 25,
+    "email_invalidos": 5,
+    "lista_emails_invalidos": [
+        "carlos.mendesgrupoalfa.com.br",
+        "helena martins@grupoalfa.com.br",
+        "paulo.gomes@@grupoalfa.com.br",
+        "vinicius.barbosa@",
+        "andre.batista@grupoalfacombr"
+    ]
+}
