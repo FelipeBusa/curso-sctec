@@ -1,0 +1,16 @@
+regiao,plano,assinantes
+Sudeste,Basico,12000
+Sudeste,Premium,9800
+Sudeste,Familia,6400
+Sul,Basico,4500
+Sul,Premium,3100
+Sul,Familia,2200
+Nordeste,Basico,5200
+Nordeste,Premium,3200
+Nordeste,Familia,1900
+Centro-Oeste,Basico,2100
+Centro-Oeste,Premium,1400
+Centro-Oeste,Familia,900
+Norte,Basico,1600
+Norte,Premium,800
+Norte,Familia,500
