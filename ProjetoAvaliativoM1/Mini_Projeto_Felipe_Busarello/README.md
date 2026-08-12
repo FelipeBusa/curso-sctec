@@ -1,58 +1,176 @@
-# MiniProjeto - Análise de Dados com Python - Turma 05
-# Felipe Busarello
+# Mini Projeto - Análise de Dados com Python | Módulo 1
+Felipe Busarello
+Curso: Análise de Dados com Python
+Turma: 05 - 2026
+Professor: Cláudio Neves
 
-Este repositório tem como objetivo a realização do Míni Projeto do Módulo 1 do curso Análise de Dados com Python, turma 05.
+
+## 📌 Sobre o Projeto
+Este repositório apresenta o **Mini Projeto do Módulo 1** do curso **Análise de Dados com Python - Turma 05**.
+
+O projeto tem como objetivo aplicar, de forma prática, os conhecimentos adquiridos durante o módulo no processo de **Extração, Transformação e Análise de dados**, utilizando Python para preparar, explorar e visualizar uma base de dados de varejo.
+
+A atividade utiliza o arquivo BaseVarejo.csv, composta por informações relacionadas a compras realizadas por clientes de uma rede de supermercados.
+
+O projeto contempla as principais etapas de um processo de análise exploratória:
+
+**Carregamento → Tratamento → Exploração → Análise → Visualização → Interpretação**
+
 
 ## 🎯 Objetivos
-O foco deste projeto é  a realização do ETL (Extração, Transformação e Carga) dos dados, garantindo que inconsistências (como valores nulos mascarados, delimitadores incorretos e tipos de dados incompatíveis) sejam corrigidos antes da etapa de visualização final.
 
-A análise concentra-se em:
-* 
+O principal objetivo deste projeto é realizar uma Análise Exploratória de Dados (AED) utilizando Python, identificando características, padrões, possíveis inconsistências e relações existentes nos dados.
+
+Durante o desenvolvimento serão realizadas atividades de:
+* Extração e carregamento dos dados;
+* Inspeção inicial da base;
+* Identificação e tratamento de inconsistências;
+* Verificação de valores ausentes;
+* Adequação dos tipos de dados;
+* Remoção de colunas desnecessárias;
+* Análise estatística e descritiva;
+* Agrupamentos e comparações entre categorias;
+* Análise de correlação entre variáveis;
+* Avaliação da necessidade de transformação de variáveis;
+* Construção de gráficos;
+* Identificação de padrões e possíveis relações nos dados;
+* Preparação dos resultados para apresentação utilizando Python.
 
 
 ## 📊 Base de Dados
-Origem: Kaggle
+A base utilizada no projeto é a **Base Varejo**, disponbilizada no Kaggle.
+
+Fonte: Kaggle
 Dataset: [Base Varejo](https://www.kaggle.com/datasets/namespaiva/base-varejo/data) 
-Características: Dados estruturados contendo informações das vendas como: identificação da venda e do produto, identificação do cliente, genero, estado civil, número de filhos entre outras informações.
+
+De acordo com a documentação fornecida para a atividade, a base representa informações de compras realizadas por clientes de uma rede de supermercados no período de 2010 a 2022.
+
+A documentação descreve os seguintes campos principais: `DATA`, `CO_ID`, `CL_ID`, `CL_GENERO`, `CL_EC`, `CL_FHL`, `CL_SEG`, `PR_ID`, `PR_CAT` e `PR_NOME`.
+
+**🗂️ Dicionário de Dados**
+Campo   Descrição
+* `DATA`	Data da compra
+* `CO_ID`	Identificação da compra / número da nota fiscal
+* `CL_ID`	Identificação do cliente
+* `CL_GENERO`	Sexo biológico informado pelo cliente
+* `CL_EC`	Estado civil do cliente
+* `CL_FHL`	Número de filhos do cliente
+* `CL_SEG`	Segmentação econômica do cliente
+* `PR_ID`	Código do produto (SKU)
+* `PR_CAT`	Categoria do produto
+* `PR_NOME`	Nome do produto
+
+
+**Estado Civil**
+
+A variável CL_EC utiliza códigos numéricos para representar o estado civil:
+
+Código  Descrição
+1	Casado ou união estável
+2	Divorciado
+3	Separado
+4	Solteiro
+5	Viúvo
+
+
+## 🔎 Processo de ETL e Preparação dos Dados
+Antes da realização da análise exploratória, os dados passam por uma etapa de inspeção e preparação.
+
+### 1. Extração
+O arquivo `BaseVarejo;csv` é carregado utilizando Pytho e as bibliotecas necessárias para manipulação dos dados.
+
+### 2. Transformação
+Durante a etapa de transformação são verificadas possíveis inconsistências, incluindo:
+* Valores ausentes;
+* Valores nulos mascarados;
+* Colunas sem informações;
+* Tipos de dados;
+* Formatação da variável de data;
+* Registros duplicados;
+* Estrutura e consistência das variáveis categóricas e numéricas.
+*Complementar*
+
+### 3. Carga
+Após a preparação, os dados tratados são utilizados como base para a **Análise Exploratória de Dados (AED)** e para a construção das visualizações.
+
+
+## 📈 Análise Exploratória de Dados
+*Complementar*
+
+
+## 📊 Visualizações
+*Complementar*
+
 
 
 ## 🛠️ Tecnologias e Bibliotecas
 O projeto foi totalmente desenvolvido em Python 3.13.14, utilizando as seguintes bibliotecas para manipulação e visualização:
-* **CSV** - Para carregamento e leitura de arquvivos com formato .csv.
-* **Pandas** - Para leitura, indexação e tratamento das matrizes de dados e strings nulas.
-* **NumPy** - Para computação numérica e suporte a operações vetoriais.
+* **CSV** - Para carregamento e leitura de arquivos com formato .csv.
+* **Pandas** - Para leitura, indexação e tratamento dos dados.
+* **NumPy** - Utilizado como suporte às operações numéricas e manipulação de dados.
 * **Matplotlib & Seaborn** - Para a geração dos gráficos estatísticos e estilização visual das distribuições.
 
+
 ## 📁 Estrutura do Projeto
-O script principal está dividido de forma modular seguindo boas práticas de Data Science:
-* **Etapa 1:** Carga e leitura do arquivo .csv.
-* **Etapa 2:** Tratamento e correção de texto como #N/D ou ND em nulos reais (NaN).
-* **Etapa 3:** Limpeza dos dados. Remoção de duplicadas ou conversão de tipos como datas/valores.
-* **Etapa 4:** Análise Exploratória: Agrupamentos estatísticos por categorias/grupos.
-* **Etapa 5:** Visualização dos Resultados: Exportação dos gráficos gerados para suporte ao Dashboard Gerencial.
+Mini_Projeto_Felipe_Busarello/
+│
+├── 📂 dataset/
+│   └── Base Varejo.csv
+│
+├── 📂 graficos/
+│   └── *Complementar*
+│
+├── 📓 Mini_Projeto_Felipe_Busarello.ipynb
+│
+└──  📄 README.md
+*Complementar*
+
 
 ## 📊 Resultados
+*Complementar*
 
 
 ## 💡 Principais aprendizados
+*Complementar*
 
 
 ## 🚧 Desafios encontrados
+*Complementar*
 
 
 ## 🚀 Como Executar o Projeto Localmente
-
 ### 1. Clonar o Repositório
-Navegue até a pasta do seu usuário dentro do repositório da turma:
-
+No terminal, execute:
 ```
-git clone [https://github.com/FelipeBusa/curso-sctec/tree/main/ProjetoAvaliativoM1/Mini_Projeto_Felipe_Busarello](https://github.com/FelipeBusa/curso-sctec/tree/main/ProjetoAvaliativoM1/Mini_Projeto_Felipe_Busarello)
+git clone [https://github.com/FelipeBusa/curso-sctec.git](https://github.com/FelipeBusa/curso-sctec.git)
+```
+
+Depois, acesse a pasta do projeto:
+```
 cd curso-sctec/ProjetoAvaliativoM1/Mini_Projeto_Felipe_Busarello
 ```
 
+### 2. Instalar as Bibliotecas
+Caso necessário, instale as bibliotecas utilizadas:
+```
+pip install pandas numpy matplotlib seaborn
+```
+
+### 3. Executar o Projeto
+Abra o notebook:
+
+Mini_Projeto_Felipe_Busarello.ipynb
+
+O projeto pode ser executado utilizando VS Code.
+
+## 🎯 Próximos Passos
+
 ## 👨‍💻 Autor
-Aluno: Felipe Busarello
+
+Felipe Busarello
+
 Curso: Análise de Dados com Python
-Turma: 05 - 2026
+Turma: 05 — 2026
 Professor: Cláudio Neves
+Projeto: Mini Projeto — Módulo 1
 Data: 17/08/2026
