@@ -46,8 +46,8 @@ O script principal está dividido de forma modular seguindo boas práticas de Da
 Navegue até a pasta do seu usuário dentro do repositório da turma:
 
 ```
-git clone [https://github.com/brunobriani-hub/turma-visualizacao-de-dados.git](https://github.com/brunobriani-hub/turma-visualizacao-de-dados.git)
-cd turma-visualizacao-de-dados/alunos/Bruno_Briani
+git clone [https://github.com/FelipeBusa/curso-sctec/tree/main/ProjetoAvaliativoM1/Mini_Projeto_Felipe_Busarello](https://github.com/FelipeBusa/curso-sctec/tree/main/ProjetoAvaliativoM1/Mini_Projeto_Felipe_Busarello)
+cd curso-sctec/ProjetoAvaliativoM1/Mini_Projeto_Felipe_Busarello
 ```
 
 ## 👨‍💻 Autor
