@@ -112,8 +112,9 @@ O projeto foi totalmente desenvolvido em Python 3.13.14, utilizando as seguintes
 
 
 ## 📁 Estrutura do Projeto
+```text
 Mini_Projeto_Felipe_Busarello/
-│
+│ 
 ├── 📂 dataset/
 │   └── Base Varejo.csv
 │
@@ -122,7 +123,8 @@ Mini_Projeto_Felipe_Busarello/
 │
 ├── 📓 Mini_Projeto_Felipe_Busarello.ipynb
 │
-└──  📄 README.md
+└── README.md
+```
 *Complementar*
 
 
