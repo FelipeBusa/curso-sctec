@@ -44,15 +44,29 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 
 ```text
 .
+├── 📂 Projeto Avaliativo M1 / Mini Projeto Felipe Busarello
+│   ├── 📂 dataset
+│   │   ├── 📄 Base Varejo.csv
+│   │   └──  📄 df_final.csv
+│   ├── 📂 Gráficos
+│   │   ├── 📊 grafico1_evolução_registros_ano.png
+│   │   ├── 📊 grafico2_registro_por_categoria_produto.png
+│   │   ├── 📊 grafico3_registros_por_filho.png
+│   │   ├── 📊 grafico4_filhos_segmento_economico.png
+│   │   ├── 📊 grafico5_evolucao_registros_mes_ano.png
+│   │   ├── 📊 grafico6_distribuicao_registros_genero.png
+│   │   └── 📊 grafico7_top5_produtos_segmento_economico.png
+│   └── 📓 Mini_Projeto_Felipe_Busarello.ipynb
+│
 ├── 📂 Semana01 - Introdução e Fundamentos da Análise de Dados
 │
 ├── 📂 Semana02 - Lógica de Programação
-│   ├── 📄 Resumo.md
+│   ├── 📓 Resumo.ipynb
 │   ├── 📓 Desafios.ipynb
 │   └── 📓 Mini Projetos.ipynb
 │
 ├── 📂 Semana03 - Versionamento e Python Local
-│   ├── 📄 Resumo.md
+│   ├── 📓 Resumo.ipynb
 │   ├── 📓 Desafios.ipynb
 │   └── 📓 Mini Projetos.ipynb
 │
@@ -63,32 +77,41 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 │   │   ├── 📄 emails_corporativos.json
 │   │   ├── 📄 funcionarios_estoque.csv
 │   │   └── 📊 recursos_humanos.xlsx
-│   ├── 📄 Resumo.md
+│   ├── 📓 Resumo.ipynb
 │   ├── 📓 Desafios.ipynb
 │   └── 📓 Mini Projetos.ipynb
 │
 ├── 📂 Semana05 - Bibliotecas Pandas e NumPy
 │   ├── 📂 Dataset
-│   │   ├── 📄 cadastro_funcionario.csv
-│   │   ├── 📄 emails_corporativos.json
-│   │   ├── 📄 funcionarios_estoque.csv
-│   │   └── 📊 recursos_humanos.xlsx
-│   ├── 📄 Resumo.md
+│   │   ├── 📄 dataset_squad_b_loja_roupas.csv
+│   │   ├── 📄 dataset_squad_c_streaming.csv
+│   │   ├── 📄 dataset_squad_d_app.csv
+│   │   ├── 📄 dataset_squad_e_clinica.csv
+│   │   └── 📄 vendas_papelaria.csv
+│   ├── 📓 Resumo.ipynb
 │   ├── 📓 Desafios.ipynb
 │   └── 📓 Mini Projetos.ipynb
 │
 ├── 📂 Semana06 - Limpeza e Transformação de Dados
-│   ├── 📓 Desafios.ipynb
-│   └── 📓 Mini Projetos.ipynb
+│   ├── 📂 Dataset
+│   │   ├── 📄 dataset_squad_b_funcionarios.csv
+│   │   ├── 📄 dataset_squad_c_pedidos.csv
+│   │   ├── 📄 dataset_squad_d_sensor.csv
+│   │   ├── 📄 dataset_squad_e_notas.csv
+│   │   ├── 📄 dre_filial_centro.csv
+│   │   ├── 📄 dre_filial_zona_sul.csv
+│   │   └── 📄 fornecedores_despesas.csv
+│   └── 📓 Resumo.ipynb
 │
 ├── 📂 Semana07 - Visualização e Pipeline
-│   ├── 📓 Desafios.ipynb
-│   └── 📓 Mini Projetos.ipynb
 │   
 ├── 📂 Semana08 - Banco de Dados Relacionais e Não Relacionais
-| 09 | Modelagem de Dados e SQL | ✅ |
-| 10 | SQL Avançado | ✅ |
-| 11 | Python e PostgreSQL 
+│   
+├── 📂 Semana09 - Modelagem de Dados e SQL
+│   
+├── 📂 Semana10 - SQL Avançado
+│   
+├── 📂 Semana11 - Python e PostgreSQL 
 │
 └── README.md
 ```
@@ -138,10 +161,7 @@ Após a conclusão do curso, os principais projetos serão disponibilizados em r
 
 # 👨‍💻 Autor
 
-**Felipe Busarello**
-
-Estudante de Análise de Dados com Python
-
-Professor [Claudio Ferreira Neves](https://github.com/cfneves) - [SCTEC](https://sctec.scti.sc.gov.br/)
-
-📍 Joinville - SC - Brasil
+**Felipe Busarello**  
+Estudante de Análise de Dados com Python  
+Professor [Claudio Ferreira Neves](https://github.com/cfneves) - [SCTEC](https://sctec.scti.sc.gov.br/)  
+📍 Joinville - SC - Brasil  
