@@ -32,7 +32,11 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 | 04 | Manipulação de Arquivos e Modularização | ✅ |
 | 05 | Bibliotecas Pandas e NumPy | ✅ |
 | 06 | Limpeza e Transformação de Dados | ✅ |
-| 07 | Visualização e Pipelines | 🔄 Em andamento |
+| 07 | Visualização e Pipelines | ✅ |
+| 08 | Banco de Dados Relacionais e Não Relacionais | ✅ |
+| 09 | Modelagem de Dados e SQL | ✅ |
+| 10 | SQL Avançado | ✅ |
+| 11 | Python e PostgreSQL | 🔄 Em andamento |
 
 ---
 
@@ -74,14 +78,17 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 │   └── 📓 Mini Projetos.ipynb
 │
 ├── 📂 Semana06 - Limpeza e Transformação de Dados
-│   ├── 📄 Resumo.md
 │   ├── 📓 Desafios.ipynb
 │   └── 📓 Mini Projetos.ipynb
 │
 ├── 📂 Semana07 - Visualização e Pipeline
-│   ├── 📄 Resumo.md
 │   ├── 📓 Desafios.ipynb
 │   └── 📓 Mini Projetos.ipynb
+│   
+├── 📂 Semana08 - Banco de Dados Relacionais e Não Relacionais
+| 09 | Modelagem de Dados e SQL | ✅ |
+| 10 | SQL Avançado | ✅ |
+| 11 | Python e PostgreSQL 
 │
 └── README.md
 ```

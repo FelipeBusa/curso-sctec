@@ -1,178 +1,274 @@
-# Mini Projeto - Análise de Dados com Python | Módulo 1
-Felipe Busarello
-Curso: Análise de Dados com Python
-Turma: 05 - 2026
-Professor: Cláudio Neves
+# 📊 Mini Projeto — Análise de Dados com Python | Módulo 1
+**Felipe Busarello**   
+**Curso:** Análise de Dados com Python  
+**Turma:** 05 - 2026  
+**Professor:** Cláudio Neves
 
 
 ## 📌 Sobre o Projeto
-Este repositório apresenta o **Mini Projeto do Módulo 1** do curso **Análise de Dados com Python - Turma 05**.
 
-O projeto tem como objetivo aplicar, de forma prática, os conhecimentos adquiridos durante o módulo no processo de **Extração, Transformação e Análise de dados**, utilizando Python para preparar, explorar e visualizar uma base de dados de varejo.
+Este projeto foi desenvolvido como atividade avaliativa do **Módulo 1 do curso Análise de Dados com Python**.  
+O objetivo é realizar uma **Análise Exploratória de Dados (AED)** sobre uma base de dados de varejo, aplicando conceitos de:  
+- Extração e carregamento de dados;
+- Verificação e validação;
+- Limpeza e transformação;
+- Estatística descritiva;
+- Agrupamento de dados;
+- Tabelas dinâmicas;
+- Visualização;
+- Interpretação dos resultados.  
 
-A atividade utiliza o arquivo BaseVarejo.csv, composta por informações relacionadas a compras realizadas por clientes de uma rede de supermercados.
-
-O projeto contempla as principais etapas de um processo de análise exploratória:
-
-**Carregamento → Tratamento → Exploração → Análise → Visualização → Interpretação**
+O projeto utiliza Python, Pandas, NumPy, Matplotlib e o módulo `csv`.
 
 
 ## 🎯 Objetivos
-
-O principal objetivo deste projeto é realizar uma Análise Exploratória de Dados (AED) utilizando Python, identificando características, padrões, possíveis inconsistências e relações existentes nos dados.
-
-Durante o desenvolvimento serão realizadas atividades de:
-* Extração e carregamento dos dados;
-* Inspeção inicial da base;
-* Identificação e tratamento de inconsistências;
-* Verificação de valores ausentes;
-* Adequação dos tipos de dados;
-* Remoção de colunas desnecessárias;
-* Análise estatística e descritiva;
-* Agrupamentos e comparações entre categorias;
-* Análise de correlação entre variáveis;
-* Avaliação da necessidade de transformação de variáveis;
-* Construção de gráficos;
-* Identificação de padrões e possíveis relações nos dados;
-* Preparação dos resultados para apresentação utilizando Python.
+O projeto tem como objetivos:  
+- Carregar e validar uma base de dados CSV;
+- Identificar problemas de qualidade dos dados;
+- Tratar valores ausentes e inconsistências;
+- Remover registros duplicados;
+- Ajustar os tipos das variáveis;
+- Realizar estatística descritiva;
+- Identificar padrões de distribuição;
+- Realizar agrupamentos com `groupby()` e `pivot_table()`;
+- Criar visualizações para apoiar a interpretação dos dados;
+- Registrar os principais insights obtidos durante a análise.
 
 
 ## 📊 Base de Dados
-A base utilizada no projeto é a **Base Varejo**, disponbilizada no Kaggle.
-
-Fonte: Kaggle
-Dataset: [Base Varejo](https://www.kaggle.com/datasets/namespaiva/base-varejo/data) 
-
-De acordo com a documentação fornecida para a atividade, a base representa informações de compras realizadas por clientes de uma rede de supermercados no período de 2010 a 2022.
-
-A documentação descreve os seguintes campos principais: `DATA`, `CO_ID`, `CL_ID`, `CL_GENERO`, `CL_EC`, `CL_FHL`, `CL_SEG`, `PR_ID`, `PR_CAT` e `PR_NOME`.
-
-**🗂️ Dicionário de Dados**
-Campo   Descrição
-* `DATA`	Data da compra
-* `CO_ID`	Identificação da compra / número da nota fiscal
-* `CL_ID`	Identificação do cliente
-* `CL_GENERO`	Sexo biológico informado pelo cliente
-* `CL_EC`	Estado civil do cliente
-* `CL_FHL`	Número de filhos do cliente
-* `CL_SEG`	Segmentação econômica do cliente
-* `PR_ID`	Código do produto (SKU)
-* `PR_CAT`	Categoria do produto
-* `PR_NOME`	Nome do produto
+Foi utilizada a base **Base Varejo**, disponibilizada no Kaggle.  
+**Fonte:** Kaggle  
+**Dataset:** [Base Varejo](https://www.kaggle.com/datasets/namespaiva/base-varejo/data)  
+A base contém informações relacionadas a compras realizadas por clientes de uma rede de supermercados.
 
 
-**Estado Civil**
-
-A variável CL_EC utiliza códigos numéricos para representar o estado civil:
-
-Código  Descrição
-1	Casado ou união estável
-2	Divorciado
-3	Separado
-4	Solteiro
-5	Viúvo
-
-
-## 🔎 Processo de ETL e Preparação dos Dados
-Antes da realização da análise exploratória, os dados passam por uma etapa de inspeção e preparação.
-
-### 1. Extração
-O arquivo `BaseVarejo;csv` é carregado utilizando Pytho e as bibliotecas necessárias para manipulação dos dados.
-
-### 2. Transformação
-Durante a etapa de transformação são verificadas possíveis inconsistências, incluindo:
-* Valores ausentes;
-* Valores nulos mascarados;
-* Colunas sem informações;
-* Tipos de dados;
-* Formatação da variável de data;
-* Registros duplicados;
-* Estrutura e consistência das variáveis categóricas e numéricas.
-*Complementar*
-
-### 3. Carga
-Após a preparação, os dados tratados são utilizados como base para a **Análise Exploratória de Dados (AED)** e para a construção das visualizações.
+### Principais campos
+| Campo | Descrição |
+|---|---|
+| `DATA` | Data da compra |
+| `CO_ID` | Identificação da compra |
+| `CL_ID` | Identificação do cliente |
+| `CL_GENERO` | Gênero informado pelo cliente |
+| `CL_EC` | Estado civil do cliente |
+| `CL_FHL` | Número de filhos |
+| `CL_SEG` | Segmentação econômica |
+| `PR_ID` | Código do produto |
+| `PR_CAT` | Categoria do produto |
+| `PR_NOME` | Nome do produto |
 
 
-## 📈 Análise Exploratória de Dados
-*Complementar*
+# 🔎 Processo de ETL
+## 1. Extração
+A base foi inicialmente carregada utilizando o `csv.DictReader`.  
+Durante a primeira leitura foi identificado que o arquivo utilizava `;` como delimitador. O parâmetro `delimiter=";"` foi então utilizado para realizar a leitura corretamente.  
+Posteriormente, a base também foi carregada utilizando `pandas.read_csv()`.
 
 
-## 📊 Visualizações
-*Complementar*
+## 2. Transformação
+Durante a preparação dos dados foram identificados e tratados os seguintes problemas:  
+
+### Colunas sem informação  
+Foram identificadas quatro colunas completamente vazias:  
+- `Unnamed: 10`
+- `Unnamed: 11`
+- `Unnamed: 12`
+- `Unnamed: 13`
+
+Essas colunas foram removidas por não apresentarem informações úteis para a análise.
+
+### Valores `#N/D`  
+Foram identificados valores `#N/D` nas colunas:  
+- `PR_CAT`
+- `PR_NOME`
+
+Os valores foram substituídos por:
+| Coluna | Tratamento |
+|---|---|
+| `PR_CAT` | `Sem Categoria` |
+| `PR_NOME` | `Sem Nome` |
+  
+Essa abordagem preservou os registros sem eliminar informações válidas das demais colunas.
 
 
+### Tipos de dados  
+Foram realizados os seguintes ajustes:  
+- `CO_ID` >> `string`
+- `CL_ID` >> `string`
+- `PR_ID` >> `string`
+- `DATA` >> `datetime`
+  
+A coluna `DATA` também foi validada após a conversão e não apresentou datas inválidas.  
 
-## 🛠️ Tecnologias e Bibliotecas
-O projeto foi totalmente desenvolvido em Python 3.13.14, utilizando as seguintes bibliotecas para manipulação e visualização:
-* **CSV** - Para carregamento e leitura de arquivos com formato .csv.
-* **Pandas** - Para leitura, indexação e tratamento dos dados.
-* **NumPy** - Utilizado como suporte às operações numéricas e manipulação de dados.
-* **Matplotlib & Seaborn** - Para a geração dos gráficos estatísticos e estilização visual das distribuições.
+
+### Registros duplicados  
+Foram identificados: **96.553 registros duplicados.**  
+Após a remoção das duplicidades: **733.447 registros.**  
+A base final utilizada nas análises contém **733.447 registros**.
 
 
-## 📁 Estrutura do Projeto
+# 📈 Análise Exploratória
+## 👨‍👩‍👧 Distribuição do número de filhos
+A variável `CL_FHL` apresentou a seguinte distribuição:  
+| Número de filhos | Registros | Percentual |
+|---:|---:|---:|
+| 0 | 384.986 | 52,49% |
+| 1 | 90.845 | 12,39% |
+| 2 | 94.168 | 12,84% |
+| 3 | 92.407 | 12,60% |
+| 4 | 71.041 | 9,69% |
+| **Total** | **733.447** | **100%** |
+
+A média foi de aproximadamente **1,15 filhos**, enquanto a mediana e a moda foram **0**.  
+Mais da metade dos registros está associada a clientes sem filhos.
+
+
+## 📅 Evolução temporal  
+A quantidade de registros por ano apresentou:  
+| Ano | Registros | Percentual |
+|---:|---:|---:|
+| 2019 | 176.103 | 24,01% |
+| 2020 | 192.804 | 26,29% |
+| 2021 | 216.813 | 29,56% |
+| 2022 | 147.727 | 20,14% |
+
+O volume de registros cresceu entre 2019 e 2021, atingindo o maior volume em 2021.  
+Em 2022 houve uma redução significativa no volume registrado.
+
+
+## 🛒 Distribuição por categoria  
+| Categoria | Registros | Percentual |
+|---|---:|---:|
+| ALIMENTOS | 384.197 | 52,38% |
+| HIGIENE | 137.702 | 18,77% |
+| LIMPEZA | 128.632 | 17,54% |
+| BEBIDAS | 38.264 | 5,22% |
+| PET | 28.553 | 3,89% |
+| ACESSORIOS | 12.871 | 1,75% |
+| Sem Categoria | 3.228 | 0,44% |
+
+As categorias **Alimentos, Higiene e Limpeza** concentram aproximadamente **88,69% dos registros**.  
+
+
+# 🔄 Agrupamentos
+Foram realizadas análises utilizando `groupby()` e `pivot_table()`.  
+
+### Número de filhos × Categoria  
+A distribuição das categorias permanece bastante semelhante entre os grupos de número de filhos.  
+A categoria **Alimentos** mantém participação próxima de 52% em todos os grupos.  
+Não foram observadas diferenças relevantes na distribuição das categorias associadas ao número de filhos.
+
+### Número de filhos × Segmento econômico  
+O segmento **B** apresenta predominância em todos os grupos de número de filhos.  
+Sua participação varia entre aproximadamente 60% e 70%.  
+O segmento A apresenta a menor participação nos diferentes grupos analisados.  
+
+### Gênero × Categoria  
+Os gêneros F e M apresentam distribuições bastante semelhantes entre as categorias.  
+A categoria Alimentos permanece como a principal categoria para ambos os grupos.  
+
+
+# 📊 Visualizações
+Os principais gráficos desenvolvidos estão disponíveis na pasta `Graficos/`.  
+
+### Evolução dos registros por ano  
+![Evolução dos registros](Graficos/grafico1_evolucao_registros_ano.png)
+
+### Distribuição por categoria  
+![Distribuição por categoria](Graficos/grafico2_registro_por_categoria_produto.png)  
+
+### Distribuição por número de filhos  
+![Distribuição por filhos](Graficos/grafico3_registros_por_filho.png)  
+
+### Filhos × Segmento econômico  
+![Filhos por segmento](Graficos/grafico4_filhos_segmento_economico.png)  
+
+### Registros por mês/ano
+![Mês ano](Graficos/grafico5_evolucao_registros_mes_ano.png) 
+
+### Registros por Gênero
+![Registros por Gênero](Graficos/grafico6_distribuicao_registros_genero.png) 
+
+### Produtos por Segmento Econômico  
+![Produto por segmento](Graficos/grafico7_top5_produtos_segmento_economico.png) 
+
+
+# 💡 Principais Insights
+1. **2021 foi o ano com maior volume de registros**, representando 29,56% da base analisada. Em 2022 houve uma redução significativa no volume de registros.  
+2. **A categoria Alimentos concentra 52,38% dos registros**, sendo a principal categoria da base.  
+3. **Alimentos, Higiene e Limpeza representam juntas aproximadamente 88,69% dos registros**, demonstrando forte concentração nessas categorias.  
+4. **52,49% dos registros estão associados a clientes sem filhos**, enquanto os grupos de 1 a 3 filhos apresentam distribuição relativamente equilibrada.  
+5. **O segmento econômico B predomina em todos os grupos de número de filhos**, apresentando participação superior aos segmentos A e C.  
+6. **As distribuições por categoria são semelhantes entre os gêneros F e M e entre os diferentes grupos de número de filhos**, não indicando diferenças relevantes nesses cruzamentos.
+
+> **Observação:** as análises desta seção são realizadas sobre registros de compras. Um mesmo cliente pode aparecer diversas vezes na base, portanto os percentuais não representam necessariamente percentuais de clientes únicos.
+
+
+# 🧠 Reflexão sobre ETL e Qualidade dos Dados
+A análise demonstrou a importância da etapa de **preparação e qualidade dos dados** antes da realização das análises exploratórias.  
+Durante o processo foram identificados problemas como:  
+- Colunas completamente vazias;
+- Valores `#N/D`;
+- Tipos de dados que precisavam de adequação;
+- Registros duplicados;
+- Necessidade de validação das datas.
+
+Após os tratamentos realizados, a base passou de **830.000 para 733.447 registros**, proporcionando uma estrutura mais adequada para as análises.  
+O processo reforçou que resultados confiáveis dependem não apenas da aplicação de técnicas analíticas, mas também da **qualidade, consistência e preparação dos dados**.  
+
+
+# 🛠️ Tecnologias utilizadas
+- Python 3.13.14
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- CSV / `csv.DictReader`
+
+
+# 📁 Estrutura do Projeto
+
 ```text
-Mini_Projeto_Felipe_Busarello/
-│ 
-├── 📂 dataset/
-│   └── Base Varejo.csv
+mini_projeto_turma05/
 │
-├── 📂 graficos/
-│   └── *Complementar*
+├── 📂 dataset/
+│   ├── Base Varejo.csv
+│   └── df_limpo.csv
+│
+├── 📂 Graficos/
+│   ├── grafico1_evolucao_registros_ano.png
+│   ├── grafico2_registro_por_categoria_produto.png
+│   ├── grafico3_registros_por_filho.png
+│   ├── grafico4_filhos_segmento_economico.png
+│   ├── grafico5_evolucao_registros_mes_ano.png
+│   ├── grafico6_distribuicao_registros_genero.png
+│   └── grafico7_top5_produtos_segmento_economico.png
 │
 ├── 📓 Mini_Projeto_Felipe_Busarello.ipynb
-│
-└── README.md
-```
-*Complementar*
-
-
-## 📊 Resultados
-*Complementar*
-
-
-## 💡 Principais aprendizados
-*Complementar*
-
-
-## 🚧 Desafios encontrados
-*Complementar*
-
-
-## 🚀 Como Executar o Projeto Localmente
-### 1. Clonar o Repositório
-No terminal, execute:
-```
-git clone [https://github.com/FelipeBusa/curso-sctec.git](https://github.com/FelipeBusa/curso-sctec.git)
+├── 📄 README.md
 ```
 
-Depois, acesse a pasta do projeto:
-```
-cd curso-sctec/ProjetoAvaliativoM1/Mini_Projeto_Felipe_Busarello
-```
 
-### 2. Instalar as Bibliotecas
-Caso necessário, instale as bibliotecas utilizadas:
-```
-pip install pandas numpy matplotlib seaborn
-```
+# 🚀 Como executar
+Clone o repositório:  
+`git clone https://github.com/FelipeBusa/curso-sctec.git`
 
-### 3. Executar o Projeto
-Abra o notebook:
 
-Mini_Projeto_Felipe_Busarello.ipynb
+Acesse a pasta:  
+`cd ProjetoAvaliativoM1`  
+`cd Mini_Projeto_Felipe_Busarello`
 
-O projeto pode ser executado utilizando VS Code.
+Instale as bibliotecas:  
+`pip install pandas numpy matplotlib seaborn`
 
-## 🎯 Próximos Passos
+Abra o arquivo:  
+`Mini_Projeto_Felipe_Busarello.ipynb`
 
-## 👨‍💻 Autor
+Execute as células sequencialmente para reproduzir as etapas de importação, tratamento, análise e visualização.
 
-Felipe Busarello
 
-Curso: Análise de Dados com Python
-Turma: 05 — 2026
-Professor: Cláudio Neves
-Projeto: Mini Projeto — Módulo 1
-Data: 17/08/2026
+# 👨‍💻 Autor
+**Felipe Busarello**  
+**Curso:** Análise de Dados com Python  
+**Turma:** 05 - 2026  
+**Professor:** Cláudio Neves  
+**Projeto:** Mini Projeto — Módulo 1
