@@ -1,12 +1,12 @@
-# 📚 Portfólio de Estudos – Análise de Dados com Python
+# 📚 Estudos – Análise de Dados com Python e SQL
 
 Bem-vindo ao meu portfólio de estudos!
 
-Este repositório reúne os exercícios de fixação, desafios, mini projetos e exemplos desenvolvidos durante o curso de **Análise de Dados com Python**.
+Este repositório reúne exercícios de fixação, desafios, mini projetos e exemplos desenvolvidos ao longo do curso de **Análise de Dados com Python**. O objetivo é documentar minha evolução, consolidar os conhecimentos adquiridos por meio da prática e desenvolver progressivamente meu raciocínio lógico e analítico..
 
 O objetivo é documentar minha evolução ao longo do curso, consolidando os conhecimentos adquiridos e registrando a resolução de problemas reais de programação. Cada semana representa uma nova etapa do aprendizado, permitindo acompanhar meu desenvolvimento em Python e na área de Análise de Dados.
 
-> **Observação:** Este repositório possui caráter exclusivamente educacional e acompanha minha evolução durante o curso. Os projetos completos desenvolvidos futuramente serão publicados em repositórios específicos, com documentação própria.
+> **Observação:** Este repositório possui caráter exclusivamente educacional e documenta minha evolução durante o curso. Projetos autorais e projetos desenvolvidos como entregas independentes serão publicados em repositórios específicos, com documentação própria.
 
 ---
 
@@ -44,10 +44,14 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 
 ```text
 .
+├── 📂 northwind
+│   └── 📄 northwind.sql
+│ 
 ├── 📂 Projeto Avaliativo M1 / Mini Projeto Felipe Busarello
 │   ├── 📂 dataset
 │   │   ├── 📄 Base Varejo.csv
 │   │   └──  📄 df_final.csv
+│   │  
 │   ├── 📂 Gráficos
 │   │   ├── 📊 grafico1_evolução_registros_ano.png
 │   │   ├── 📊 grafico2_registro_por_categoria_produto.png
@@ -104,14 +108,29 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 │   └── 📓 Resumo.ipynb
 │
 ├── 📂 Semana07 - Visualização e Pipeline
-│   
+│   ├── 📄 Base Varejo.csv
+│   ├── 📄 Mini-Projeto_Avaliativo.md
+│   └── 📄 Projeto III - Anlise Exploratória de Dados Utilizando o Python ou RStudio.pdf
+
 ├── 📂 Semana08 - Banco de Dados Relacionais e Não Relacionais
-│   
+│   ├── 📄 Desafios.sql
+│   ├── 📄 Exercícios.sql
+│   └── 📄 Resumo.sql
+│
 ├── 📂 Semana09 - Modelagem de Dados e SQL
+│   ├── 📄 Desafios.sql
+│   ├── 📄 Exercícios.sql
+│   └── 📄 Resumo.sql
 │   
 ├── 📂 Semana10 - SQL Avançado
+│   ├── 📄 Desafios.sql
+│   ├── 📄 Exercícios.sql
+│   └── 📄 Resumo.sql
 │   
 ├── 📂 Semana11 - Python e PostgreSQL 
+│   ├── 📓 Desafios.ipynb
+│   ├── 📓 Exercícios.ipynb
+│   └── 📓 Resumo.ipynb
 │
 └── README.md
 ```
@@ -121,7 +140,9 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 # 💻 Tecnologias Utilizadas
 
 - 🐍 Python
-- 💻 VSCode - Visual Studio Code
+- 🗄️ SQL
+- 🐘 PostgreSQL
+- 💻 VS Code (Visual Studio Code)
 - 📒 Google Colab
 - 🌿 Git
 - 🐙 GitHub
@@ -145,9 +166,9 @@ Durante o desenvolvimento dos exercícios procuro seguir um processo semelhante 
 
 | Item | Quantidade |
 |------|-----------:|
-| 📁 Semanas concluídas | 6 |
-| 💡 Desafios concluídos | 33 de 34 |
-| 🚀 Mini Projetos | 8 de 11 |
+| 📁 Semanas concluídas | 10 |
+| 💡 Desafios concluídos | 33 |
+| 🚀 Mini Projetos concluídos | 8 |
 
 ---
 
