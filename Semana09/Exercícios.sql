@@ -1,5 +1,3 @@
--- EXERCÍCIOS
-
 -- SEMANA 09
 -- MÓDULO 4 - FUNÇÕES DE AGREGAÇÃO E AGRUPAMENTOS - 4. ApostilaPostgreSQL.pdf
 /* Questão 1
@@ -7,6 +5,9 @@ A gerência deseja saber quantos fornecedores estão cadastrados no
 sistema para avaliar as possibilidades de novas parcerias.
 Crie uma consulta que retorne a quantidade total de fornecedores.
 (Utilize a tabela suppliers)*/
+SELECT 
+	COUNT (*) AS total_fornecedores
+FROM public.suppliers;
 
 
 /* Questão 2
@@ -15,6 +16,8 @@ sistema para avaliar o custo médio dos itens vendidos.
 Crie uma consulta para calcular a média de preço dos produtos. (Utilize a
 tabela products)
 */
+SELECT AVG (unit_price) AS preco_medio_produtos
+FROM public.produtos;
 
 
 /* Questão 3
@@ -23,6 +26,10 @@ já cobrado em pedidos para entender a variabilidade nos custos de
 entrega.
 Crie a consulta que retorna esses valores. (Utilize a tabela orders)
 */
+SELECT
+	MIN (freight) AS menor_frete,
+	MAX (freight) AS maior_frete
+FROM public.pedidos;
 
 
 /* Questão 4
@@ -33,6 +40,9 @@ corporativo local.
 Desenvolva uma consulta que mostre a contagem total de funcionários
 nessa região. (Utilize a tabela employees)
 */
+SELECT COUNT (*) AS funcionarios_em_wa
+FROM public.employees
+WHERE region = 'WA';
 
 
 /* Questão 5
@@ -43,6 +53,9 @@ Crie uma consulta que retorne a soma das unidades encomendadas
 (units_on_order) de todos os produtos cuja descrição no campo
 "quantity_per_unit" mencione "bottles". (Utilize a tabela products)
 */
+SELECT SUM (units_on_order) AS total_encomendado
+FROM public.produtos
+WHERE quantity_per_unit LIKE '%bottles%';
 
 
 /* Questão 6
@@ -53,6 +66,12 @@ produtos associados a ela. Ordene o resultado pela contagem da
 quantidade de produtos em ordem decrescente. (Utilize a tabela
 products)
 */
+SELECT
+	id_categoria,
+	COUNT (*) AS quantidade_produtos
+FROM public.produtos
+GROUP BY id_categoria
+ORDER BY quantidade_produtos DESC;
 
 
 /* Questão 7
@@ -64,6 +83,12 @@ Elabore uma consulta que exiba o nome do país de envio e a soma total
 dos fretes, ordenando o resultado do maior para o menor valor. (Utilize a
 tabela orders)
 */
+SELECT
+	ship_country,
+	SUM (freight) AS total_frete
+FROM public.pedidos
+GROUP BY ship_country
+ORDER BY total_frete DESC;
 
 
 /* Questão 8
@@ -76,6 +101,12 @@ tomar decisões informadas sobre estratégias de vendas e promoções.
 Crie uma consulta que retorne o ID da categoria, a contagem de produtos
 e a soma do estoque por categoria. (Utilize a tabela products)
 */
+SELECT
+	id_categoria,
+	COUNT(*) AS qtd_produtos_categoria,
+	SUM (units_in_stock) AS estoque_total
+FROM public.produtos
+GROUP BY id_categoria;
 
 
 /* Questão 9
@@ -88,6 +119,12 @@ Sua tarefa é criar uma consulta SQL que calcule o preço médio por
 unidade para as categorias de bebidas e laticínios, pois isso ajudará a
 equipe a tomar futuras decisões comerciais. (Utilize a tabela products)
 */
+SELECT
+	id_categoria,
+	AVG (unit_price)
+FROM public.produtos
+WHERE id_categoria IN (1, 4)
+GROUP BY id_categoria;
 
 
 /* Questão 10
@@ -102,6 +139,13 @@ no mínimo 1000 unidades vendidas. A consulta deve exibir os produtos
 com o maior volume de vendas primeiro, para que a equipe de vendas
 possa priorizar os itens mais vendidos. (Utilize a tabela order_details)
 */
+SELECT
+	id_produto AS id_produto,
+	SUM (quantidade) AS total_vendido
+FROM public.itens_pedido
+GROUP BY id_produto
+HAVING SUM (quantidade) >= 1000
+ORDER BY total_vendido DESC;
 
 
 
@@ -116,10 +160,10 @@ Crie uma consulta usando um LEFT JOIN para mostrar o nome do
 produto, o nome do fornecedor e o país do fornecedor. (Utilize as tabelas
 products e suppliers) */
 SELECT
-	tp.product_name AS "Nome_Produto",
+	tp.nome_produto AS "Nome_Produto",
 	ts.company_name AS "Nome_Fornecedor",
 	ts.country AS "Pais_Fornecedor"
-FROM public.products tp
+FROM public.produtos tp
 LEFT JOIN public.suppliers ts
 	ON tp.supplier_id = ts.supplier_id;
 
@@ -137,13 +181,13 @@ cliente que mais efetuou pedidos para o que menos comprou na empresa.
 (Utilize as tabelas customers e orders)
 */
 SELECT 
-	tc.customer_id AS "ID_Cliente",
-	tc.company_name AS "Nome_Cliente",
-	COUNT (tor.order_id) AS "Total_Pedidos"
-FROM public.customers tc
-LEFT JOIN public.orders tor
-	ON tc.customer_id = tor.customer_id
-GROUP BY tc.customer_id, tc.company_name
+	tc.id_cliente AS "ID_Cliente",
+	tc.nome_empresa AS "Nome_Cliente",
+	COUNT (tor.id_pedido) AS "Total_Pedidos"
+FROM public.clientes tc
+LEFT JOIN public.pedidos tor
+	ON tc.id_cliente = tor.id_cliente
+GROUP BY tc.id_cliente, tc.nome_empresa
 ORDER BY "Total_Pedidos" DESC;
 
 
@@ -157,14 +201,14 @@ Altere o código do item A para retornar apenas esses clientes. (Utilize as
 tabelas customers e orders)
 */
 SELECT 
-	tc.customer_id AS "ID_Cliente",
-	tc.company_name AS "Nome_Cliente",
-	COUNT (tor.order_id) AS "Total_Pedidos"
-FROM public.customers tc
-LEFT JOIN public.orders tor
-	ON tc.customer_id = tor.customer_id
-GROUP BY tc.customer_id, tc.company_name
-HAVING COUNT (tor.order_id) = '0';
+	tc.id_cliente AS "ID_Cliente",
+	tc.nome_empresa AS "Nome_Cliente",
+	COUNT (tor.id_pedido) AS "Total_Pedidos"
+FROM public.clientes tc
+LEFT JOIN public.pedidos tor
+	ON tc.id_cliente = tor.id_cliente
+GROUP BY tc.id_cliente, tc.nome_empresa
+HAVING COUNT (tor.id_pedido) = '0';
 
 
 /*
@@ -178,16 +222,16 @@ Altere a consulta do item A para que retorne o resultado esperado.
 (Utilize as tabelas customers e orders)
 */
 SELECT 
-	tc.customer_id AS "ID_Cliente",
-	tc.company_name AS "Nome_Cliente",
-	tc.country AS "Pais_Cliente",
-	COUNT (tor.order_id) AS "Total_Pedidos"
-FROM public.customers tc
-LEFT JOIN public.orders tor
-	ON tc.customer_id = tor.customer_id
-WHERE tc.country = 'Brazil'
-GROUP BY tc.customer_id, tc.company_name
-ORDER BY COUNT (tor.order_id) DESC;
+	tc.id_cliente AS "ID_Cliente",
+	tc.nome_empresa AS "Nome_Cliente",
+	tc.pais AS "Pais_Cliente",
+	COUNT (tor.id_pedido) AS "Total_Pedidos"
+FROM public.clientes tc
+LEFT JOIN public.pedidos tor
+	ON tc.id_cliente = tor.id_cliente
+WHERE tc.pais = 'Brazil'
+GROUP BY tc.id_cliente, tc.nome_empresa
+ORDER BY COUNT (tor.id_pedido) DESC;
 
 
 /*
@@ -203,17 +247,15 @@ INNER JOINs nesta consulta. (Utilize as tabelas customers, orders e
 order_details)
 */
 SELECT 
-	tc.customer_id,
-	tc.company_name,
-	SUM (tod.unit_price * tod.quantity) AS total_receita
-FROM public.customers tc
-INNER JOIN public.orders tor
-	ON tc.customer_id = tor.customer_id
-	INNER JOIN public.order_details tod
-		ON tor.order_id = tod.order_id
-GROUP BY tc.customer_id, tc.company_name;
-
-
+	tc.id_cliente,
+	tc.nome_empresa,
+	SUM (tod.preco_unitario * tod.quantidade) AS total_receita
+FROM public.clientes tc
+INNER JOIN public.pedidos tor
+	ON tc.id_cliente = tor.id_cliente
+	INNER JOIN public.itens_pedido tod
+		ON tor.id_pedido = tod.id_pedido
+GROUP BY tc.id_cliente, tc.nome_empresa;
 
 	
 /*
@@ -241,7 +283,7 @@ HAVING COUNT (tor.order_id) >1;
 
 
 /*
-Questão 5
+Questão 5 - PAREI AQUI
 A equipe financeira quer priorizar negociações com fornecedores que
 oferecem produtos com preços médios acima de R$30. Esses
 fornecedores serão tratados como parceiros estratégicos para produtos
