@@ -8,6 +8,8 @@ configurado corretamente, siga os passos abaixo:
 Crie um banco de dados chamado dbTeste;
 Após, exclua-o completamente.
 */
+CREATE DATABASE dbTeste;
+DROP DATABASE dbTeste;
 
 
 /* Questão 2
@@ -18,24 +20,48 @@ Para isso, crie um banco de dados chamado dbHote XXXX que será
 utilizado para centralizar e organizar todas as informações necessárias
 para a operação eficiente do hotel.
 */
-
+CREATE DATABASE dbHote;
 
 /* Questão 3a
 Com o banco de dados dbHote XXXX em uso, crie as seguintes tabelas:
 a) Tabela clientes
 */
+CREATE TABLE clientes (
+	id_cliente INT,
+	nome VARCHAR (100) NOT NULL,
+	email VARCHAR (50) NOT NULL,
+	data_nascimento DATE,
+	PRIMARY KEY (id_cliente)
+);
 
 
 /* Questão 3b
 Com o banco de dados dbHote XXXX em uso, crie as seguintes tabelas:
 b) Tabela quartos
 */
+CREATE TABLE quartos (
+	id_quarto INT,
+	tipo VARCHAR (30) NOT NULL,
+	qtd_pessoas INT NOT NULL,
+	preco_diaria NUMERIC(10, 2) NOT NULL,
+	PRIMARY KEY (id_quarto)
+);
 
 
 /* Questão 3c
 Com o banco de dados dbHote XXXX em uso, crie as seguintes tabelas:
 a) Tabela estadias
 */
+CREATE TABLE estadias (
+	id_estadia INT,
+	id_cliente INT NOT NULL,
+	id_quarto INT NOT NULL,
+	data_entrada TIMESTAMP NOT NULL,
+	data_saida TIMESTAMP,
+	PRIMARY KEY (id_estadia),
+	FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente),
+	FOREIGN KEY (id_quarto) REFERENCES quartos (id_quarto)
+);
 
 
 /* Questão 4a
@@ -44,7 +70,19 @@ estadias:
 a) Insira 10 clientes na tabela clientes e faça uma consulta para verificar
 se os dados foram inseridos corretamente:
 */
+INSERT INTO clientes (id_cliente, nome, email, data_nascimento) VALUES
+(1, 'Ana Silva', 'ana.silva@email.com', '1990-03-15'),
+(2, 'Carlos Souza', 'carlos.souza@email.com', '1985-07-20'),
+(3, 'Maria Oliveira', 'maria.oliveira@email.com', '1993-11-05'),
+(4, 'João Santos', 'joao.santos@email.com', '1978-02-25'),
+(5, 'Beatriz Lima', 'beatriz.lima@email.com', '2000-01-12'),
+(6, 'Lucas Alves', 'lucas.alves@email.com', NULL),
+(7, 'Fernanda Rocha', 'fernanda.rocha@email.com', '1995-06-10'),
+(8, 'Gabriel Mendes', 'gabriel.mendes@email.com', '1989-08-08'),
+(9, 'Sofia Costa', 'sofia.costa@email.com', '1991-12-24'),
+(10, 'Rafael Silva', 'rafael.silva@email.com', '1997-04-18');
 
+SELECT * FROM clientes;
 
 /* Questão 4b
 Agora que as tabelas foram criadas, insira os dados dos clientes, quartos e
@@ -52,6 +90,19 @@ estadias:
 b) Insira 10 quartos na tabela quartos e faça uma consulta para verificar
 se os dados foram inseridos corretamente:
 */
+INSERT INTO quartos (id_quarto, tipo, qtd_pessoas, preco_diaria) VALUES
+(1, 'Single', 1, 150.00),
+(2, 'Double', 2, 250.00),
+(3, 'Suite', 4, 500.00),
+(4, 'Single', 1, 140.00),
+(5, 'Double', 2, 230.00),
+(6, 'Suite', 4, 550.00),
+(7, 'Single', 1, 160.00),
+(8, 'Double', 2, 240.00),
+(9, 'Suite', 4, 600.00),
+(10, 'Single', 1, 170.00);
+
+SELECT * FROM quartos;
 
 
 /* Questão 4c
@@ -60,6 +111,24 @@ estadias:
 c) Insira 15 estadias na tabela estadias e faça uma consulta para verificar
 se os dados foram inseridos corretamente:
 */
+INSERT INTO estadias (id_estadia, id_cliente, id_quarto, data_entrada, data_saida) VALUES
+(1, 1, 2, '2024-01-15 14:00:00', '2024-01-16 12:00:00'),
+(2, 3, 5, '2024-02-16 16:00:00', '2024-02-18 11:00:00'),
+(3, 4, 1, '2024-03-17 13:00:00', '2024-03-19 11:00:00'),
+(4, 2, 3, '2024-04-18 15:00:00', '2024-05-10 10:00:00'),
+(5, 5, 7, '2024-05-19 12:30:00', '2024-05-23 12:00:00'),
+(6, 6, 9, '2024-06-20 18:00:00', '2024-06-22 14:00:00'),
+(7, 8, 4, '2024-07-21 11:00:00', '2024-07-23 09:00:00'),
+(8, 9, 10, '2024-08-22 14:00:00', '2024-08-24 12:00:00'),
+(9, 7, 6, '2024-09-23 10:00:00', '2024-09-26 10:00:00'),
+(10, 10, 8, '2024-10-24 16:00:00', '2024-11-06 11:00:00'),
+(11, 1, 5, '2024-11-25 13:00:00', '2024-11-27 10:00:00'),
+(12, 3, 2, '2024-12-26 17:00:00', '2024-12-28 13:00:00'),
+(13, 4, 1, '2024-12-27 12:00:00', NULL),
+(14, 8, 7, '2024-12-28 15:00:00', NULL),
+(15, 9, 3, '2024-12-29 14:00:00', NULL);
+
+SELECT * FROM estadias;
 
 
 /* Questão 5
@@ -67,6 +136,11 @@ O cliente da estadia de id_estadia = 13 desocupou o quarto em
 04/01/2025 ao meio-dia.
 Atualize a tabela para fazer constar essa informação.
 */
+UPDATE estadias
+SET data_saida = '2025-01-04 12:00:00'
+WHERE id_estadia = 13;
+
+SELECT * FROM estadias;
 
 
 /* Questão 6
@@ -80,6 +154,15 @@ tabela estadias.
 b) Após a exclusão das estadias, excluir a cliente Beatriz Lima
 (id_cliente = 5) da tabela clientes.
 */
+DELETE FROM estadias
+WHERE id_cliente = 5;
+
+SELECT * FROM estadias;
+
+DELETE FROM clientes
+WHERE id_cliente = 5;
+
+SELECT FROM clientes;
 
 
 /* Questão 7
@@ -91,6 +174,7 @@ efetuado para que os dados não sejam perdidos.
 Agora, você já pode esvaziar todos os registros da tabela estadias,
 garantindo que a estrutura da tabela seja mantida.
 */
+TRUNCATE TABLE estadias;
 
 
 /* Questão 8
@@ -101,6 +185,9 @@ Agora, como parte da transição, as tabelas clientes, quartos e estadias
 precisam ser excluídas completamente, removendo qualquer
 dependência existente. Realize essa exclusão.
 */
+DROP TABLE clientes CASCADE;
+DROP TABLE quartos CASCADE;
+DROP TABLE estadias CASCADE;
 
 
 
@@ -113,6 +200,9 @@ relatório de auditoria que será enviado à diretoria.
 Calcule o valor médio de frete e arredonde para duas casas decimais.
 (Utilize a tabela orders)
 */
+SELECT
+	ROUND (CAST (AVG (freight) AS NUMERIC), 2) AS media_frete
+FROM orders;
 
 
 /* Questão 2
@@ -126,6 +216,11 @@ Mostre as categorias de produtos, suas descrições com a formatação
 padronizada (primeira letra de cada palavra em maiúscula) e o número
 total de caracteres de cada descrição. (Utilize a tabela categories)
 */
+SELECT
+	category_name,
+	INITCAP (description) AS descricao_formatada,
+LENGTH (description) AS qtd_caracteres_descricao
+FROM categories;
 
 
 /* Questão 3
@@ -138,6 +233,13 @@ Liste os IDs, os nomes e sobrenomes, bem como os cargos dos
 funcionários, efetuando a substituição solicitada. (Utilize a tabela
 employees)
 */
+SELECT
+	employee_id,
+	first_name,
+	last_name,
+	title,
+	REPLACE (title, 'Sales Representative', 'Salesperson') AS titulo_alterado
+FROM employees;
 
 
 /* Questão 4
@@ -148,6 +250,11 @@ impacto e personalização, aumentando as chances de engajamento.
 Liste os contatos dos clientes, uma vez em letras maiúsculas e outra em
 letras minúsculas. (Utilize a tabela customers)
 */
+SELECT
+	contact_name,
+	UPPER (contact_name) AS nome_maiusculo,
+	LOWER (contact_name) AS nome_minusculo
+FROM customers;
 
 
 /* Questão 5
@@ -158,6 +265,11 @@ a planejar rotas de forma mais eficiente.
 Extraia os dois primeiros caracteres do campo postal_code dos clientes.
 (Utilize a tabela customers)
 */
+SELECT
+	customer_id,
+	postal_code,
+	SUBSTRING (postal_code, 1, 2) AS regiao
+FROM customers;
 
 
 /* Questão 6
@@ -168,7 +280,12 @@ de centavo seja perdida no processo de cobrança.
 Exiba o valor total de cada ordem, calculado pela soma de unit_price*
 quantity, arredondado para cima. (Utilize a tabela order_details)
 */
-
+SELECT
+	order_id,
+	SUM (unit_price * quantity) AS total,
+	CEILING (SUM (unit_price * quantity)) AS total_arredondado
+FROM order_details
+GROUP BY order_id;
 
 /* Questão 7
 O time de marketing está organizando uma campanha especial para
@@ -179,6 +296,12 @@ Localize a posição do termo "Organic" nos nomes dos produtos,
 retornando somente os produtos cujo termo seja encontrado. (Utilize a
 tabela products)
 */
+SELECT
+	product_id,
+	product_name,
+	STRPOS (product_name, 'Organic') AS posicao_organic
+FROM products
+WHERE STRPOS (product_name, 'Organic') > 0;
 
 
 /* Questão 8
@@ -192,6 +315,15 @@ nascimento e a idade dos funcionários que fazem aniversário no mês
 corrente. Além disso, inclua a data atual na consulta para referência.
 (Utilize a tabela employees)
 */
+SELECT
+	employee_id,
+	first_name,
+	last_name,
+	birth_date,
+	CURRENT_DATE AS data_atual,
+	AGE (birth_date)
+FROM employees
+WHERE DATE_PART ('month', birth_date) = DATE_PART('month', CURRENT_DATE);
 
 
 /* Questão 9
@@ -205,6 +337,11 @@ máximo de pacotes completos que podem ser formados, levando em
 consideração a quantidade disponível de cada produto. (Utilize a tabela
 products)
 */
+SELECT
+	product_name,
+	units_in_stock,
+	FLOOR (units_in_stock / 10) AS pacotes_completos
+FROM products;
 
 
 /* Questão 10
@@ -217,6 +354,10 @@ Crie uma consulta que exiba a média dos valores de desconto em todos os
 pedidos, mostrando o valor original e o valor com três casas decimais sem
 arredondamentos. (Utilize a tabela order_details)
 */
+SELECT
+	AVG (discount) AS media_desconto,
+	TRUNC (CAST (AVG (discount) AS NUMERIC), 3) AS media_desconto_truncada
+FROM order_details;
 
 
 
@@ -230,7 +371,6 @@ Crie uma consulta que liste os IDs, nomes das empresas, nomes e cargos
 dos contatos e telefones desses clientes. (Utilize as tabelas customers e
 orders)
 */
-
 SELECT
 	customer_id,
 	company_name,
@@ -242,8 +382,7 @@ WHERE customer_id IN (
 		SELECT customer_id
 		FROM public.orders
 		GROUP BY customer_id
-		HAVING COUNT (*) > 10);
-
+		HAVING COUNT (*) > 1);
 
 
 /* Questão 2
@@ -254,6 +393,24 @@ campanhas promocionais ou incentivos para compras recorrentes.
 Crie uma consulta que retorne a média de pedidos feitos por cliente.
 (Utilize a tabela orders)
 */
+-- Select da subquerie
+SELECT
+	customer_id,
+	COUNT (order_id) AS total_pedidos
+FROM orders
+GROUP BY customer_id;
+
+
+-- Select completo
+SELECT
+AVG (total_pedidos)
+FROM (
+	SELECT
+		customer_id,
+		COUNT (order_id) AS total_pedidos
+	FROM orders
+	GROUP BY customer_id
+) t;
 
 
 /* Questão 3
@@ -265,6 +422,23 @@ Crie uma consulta que retorne o ID, nome e sobrenome, bem como a data
 da contratação desse(a) funcionário(a) que está há mais tempo na
 empresa. (Utilize a tabela employees)
 */
+-- Select da Subquerie
+SELECT
+	MIN (hire_date)
+FROM employees;
+
+-- Select Completo
+SELECT
+	employee_id,
+	first_name,
+	last_name,
+	hire_date
+FROM employees
+WHERE hire_date = (
+		SELECT
+			MIN (hire_date)
+		FROM employees
+		);
 
 
 /* Questão 4
@@ -277,6 +451,42 @@ Crie uma consulta para obter essa informação, ordenando-a pelo valor
 total do pedido. Entenda por valor total a soma de unit_price * quantity.
 (Utilize a tabela order_details)
 */
+-- Select Subquerie 1
+SELECT
+	order_id,
+	SUM (unit_price * quantity) AS total
+FROM order_details
+GROUP BY order_id;
+
+-- Select Subquerie 2
+SELECT
+	AVG (total)
+FROM (
+	SELECT
+		order_id,
+		SUM (unit_price * quantity) AS total
+FROM order_details
+GROUP BY order_id
+) t;
+
+-- Select Completa
+SELECT
+	order_id,
+	SUM (unit_price * quantity) AS total_pedido
+FROM order_details
+GROUP BY order_id
+HAVING SUM (unit_price * quantity) >(
+							SELECT
+								AVG (total)
+							FROM (
+								SELECT
+									order_id,
+									SUM (unit_price * quantity) AS total
+							FROM order_details
+							GROUP BY order_id
+							) t
+						)
+ORDER BY total_pedido;
 
 
 /* Questão 5
@@ -288,6 +498,38 @@ Crie uma consulta que liste os IDs, nomes das empresas, nomes e cargos
 dos contatos e telefones desses clientes. (Utilize as tabelas customers,
 orders,order_details, products e categories)
 */
+-- Select subquerie 1
+SELECT DISTINCT
+	o.customer_id
+FROM orders o
+INNER JOIN order_details od
+	ON o.order_id = od.order_id
+	INNER JOIN products p
+		ON od.product_id = p.product_id
+		INNER JOIN categories cat
+			ON p.category_id = cat.category_id
+WHERE cat.category_name = 'Beverages'
+
+-- Select completo
+SELECT
+	c.customer_id,
+	c.company_name,
+	c.contact_name,
+	c.contact_title,
+	c.phone
+FROM customers c
+WHERE c.customer_id IN(
+					SELECT DISTINCT
+						o.customer_id
+					FROM orders o
+					INNER JOIN order_details od
+						ON o.order_id = od.order_id
+						INNER JOIN products p
+							ON od.product_id = p.product_id
+							INNER JOIN categories cat
+								ON p.category_id = cat.category_id
+					WHERE cat.category_name = 'Beverages'
+				);
 
 
 /* Questão 6
@@ -298,6 +540,27 @@ estratégias de precificação e posicionamento de mercado.
 Crie uma consulta que retorne os nomes e os preços desses produtos.
 (Utilize as tabelas products e categories)
 */
+-- Select Subquerie 1
+SELECT
+	MAX (unit_price)
+FROM products p
+INNER JOIN categories c
+	ON p.category_id = c.category_id
+WHERE c.category_name = 'Condiments';
+
+-- Select
+SELECT
+	product_name,
+	unit_price
+FROM products
+WHERE unit_price > (
+					SELECT
+						MAX (unit_price)
+					FROM products p
+					INNER JOIN categories c
+						ON p.category_id = c.category_id
+					WHERE c.category_name = 'Condiments');
+
 
 
 /* Questão 7
@@ -310,6 +573,30 @@ incentivando um desempenho ainda melhor da equipe comercial.
 Crie uma consulta que retorne o ID, o nome e o sobrenome desse(a)
 funcionário(a). (Utilize as tabelas employees, orders e order_details)
 */
+-- Select Subquerie 1
+SELECT employee_id
+FROM orders o
+INNER JOIN order_details od
+	ON o.order_id = od.order_id
+GROUP BY employee_id
+ORDER BY SUM (unit_price * quantity) DESC
+LIMIT 1;
+
+-- Select Completo
+SELECT
+	employee_id,
+	first_name,
+	last_name
+FROM employees
+WHERE employee_id = (
+			SELECT employee_id
+			FROM orders o
+			INNER JOIN order_details od
+				ON o.order_id = od.order_id
+			GROUP BY employee_id
+			ORDER BY SUM (unit_price * quantity) DESC
+			LIMIT 1
+		);
 
 /* Questão 8
 O setor comercial deseja identificar clientes que nunca realizaram um
@@ -320,6 +607,25 @@ Crie uma consulta que retorne os IDs, nomes das empresas, nomes e
 cargos dos contatos e telefones desses clientes. (Utilize as tabelas
 customers e orders)
 */
+-- Select Subquerie 1
+SELECT DISTINCT
+	customer_id
+FROM orders;
+
+-- Select Completa
+SELECT
+	customer_id,
+	company_name,
+	contact_name,
+	contact_title,
+	phone
+FROM customers
+WHERE customer_id NOT IN (
+					SELECT DISTINCT
+						customer_id
+					FROM orders
+				);
+
 
 /* Questão 9
 A equipe de compras quer analisar quais fornecedores oferecem
@@ -330,6 +636,24 @@ Crie uma consulta que liste os IDs e os nomes dos fornecedores que
 oferecem produtos com preço acima da média geral de preços
 cadastrados. (Utilize as tabelas suppliers e products)
 */
+-- Select Subquerie 1
+SELECT
+	AVG (unit_price)
+FROM products;
+
+-- Select Completo
+SELECT DISTINCT
+	s.supplier_id,
+	s.company_name
+FROM suppliers s
+INNER JOIN products p
+	ON s.supplier_id = p.supplier_id
+WHERE p.unit_price > (
+					SELECT
+						AVG (unit_price)
+					FROM products
+				);
+
 
 /* Questão 10
 O setor de estoque precisa verificar se existem produtos que nunca
@@ -340,3 +664,20 @@ do catálogo.
 Crie uma consulta que retorne os IDs e os nomes desses produtos, caso
 existam. (Utilize as tabelas products e order_details)
 */
+-- Select Subquerie 1
+SELECT DISTINCT
+	product_id
+FROM order_details;
+
+-- Select Completa
+SELECT
+	product_id,
+	product_name
+FROM products
+WHERE product_id NOT IN (
+				SELECT DISTINCT
+					product_id
+				FROM order_details
+			);
+
+

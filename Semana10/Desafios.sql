@@ -90,9 +90,6 @@ SELECT * FROM public.orders;
 SELECT * FROM public.territories;
 
 
-
-
-
 /*
 Exercício 3 — Análise de clientes e comportamento de compra
 O time de Marketing quer identificar clientes que apresentam alto valor para a empresa.

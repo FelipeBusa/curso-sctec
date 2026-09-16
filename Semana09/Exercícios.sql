@@ -1,3 +1,5 @@
+-- EXERCÍCIOS
+
 -- SEMANA 09
 -- MÓDULO 4 - FUNÇÕES DE AGREGAÇÃO E AGRUPAMENTOS - 4. ApostilaPostgreSQL.pdf
 /* Questão 1
@@ -5,9 +7,8 @@ A gerência deseja saber quantos fornecedores estão cadastrados no
 sistema para avaliar as possibilidades de novas parcerias.
 Crie uma consulta que retorne a quantidade total de fornecedores.
 (Utilize a tabela suppliers)*/
-SELECT 
-	COUNT (*) AS total_fornecedores
-FROM public.suppliers;
+SELECT COUNT(*) AS total_fornecedores
+FROM suppliers;
 
 
 /* Questão 2
@@ -17,7 +18,7 @@ Crie uma consulta para calcular a média de preço dos produtos. (Utilize a
 tabela products)
 */
 SELECT AVG (unit_price) AS preco_medio_produtos
-FROM public.produtos;
+FROM products;
 
 
 /* Questão 3
@@ -29,7 +30,7 @@ Crie a consulta que retorna esses valores. (Utilize a tabela orders)
 SELECT
 	MIN (freight) AS menor_frete,
 	MAX (freight) AS maior_frete
-FROM public.pedidos;
+FROM orders;
 
 
 /* Questão 4
@@ -40,8 +41,8 @@ corporativo local.
 Desenvolva uma consulta que mostre a contagem total de funcionários
 nessa região. (Utilize a tabela employees)
 */
-SELECT COUNT (*) AS funcionarios_em_wa
-FROM public.employees
+SELECT COUNT(*) AS funcionarios_em_wa
+FROM employees
 WHERE region = 'WA';
 
 
@@ -54,7 +55,7 @@ Crie uma consulta que retorne a soma das unidades encomendadas
 "quantity_per_unit" mencione "bottles". (Utilize a tabela products)
 */
 SELECT SUM (units_on_order) AS total_encomendado
-FROM public.produtos
+FROM products
 WHERE quantity_per_unit LIKE '%bottles%';
 
 
@@ -66,11 +67,11 @@ produtos associados a ela. Ordene o resultado pela contagem da
 quantidade de produtos em ordem decrescente. (Utilize a tabela
 products)
 */
-SELECT
-	id_categoria,
+SELECT 
+	category_id,
 	COUNT (*) AS quantidade_produtos
-FROM public.produtos
-GROUP BY id_categoria
+FROM products
+GROUP BY category_id
 ORDER BY quantidade_produtos DESC;
 
 
@@ -86,7 +87,7 @@ tabela orders)
 SELECT
 	ship_country,
 	SUM (freight) AS total_frete
-FROM public.pedidos
+FROM orders
 GROUP BY ship_country
 ORDER BY total_frete DESC;
 
@@ -102,11 +103,11 @@ Crie uma consulta que retorne o ID da categoria, a contagem de produtos
 e a soma do estoque por categoria. (Utilize a tabela products)
 */
 SELECT
-	id_categoria,
+	category_id,
 	COUNT(*) AS qtd_produtos_categoria,
-	SUM (units_in_stock) AS estoque_total
-FROM public.produtos
-GROUP BY id_categoria;
+SUM (units_in_stock) AS estoque_total
+FROM products
+GROUP BY category_id;
 
 
 /* Questão 9
@@ -120,11 +121,11 @@ unidade para as categorias de bebidas e laticínios, pois isso ajudará a
 equipe a tomar futuras decisões comerciais. (Utilize a tabela products)
 */
 SELECT
-	id_categoria,
+	category_id,
 	AVG (unit_price)
-FROM public.produtos
-WHERE id_categoria IN (1, 4)
-GROUP BY id_categoria;
+FROM products
+WHERE category_id IN (1, 4)
+GROUP BY category_id;
 
 
 /* Questão 10
@@ -140,11 +141,11 @@ com o maior volume de vendas primeiro, para que a equipe de vendas
 possa priorizar os itens mais vendidos. (Utilize a tabela order_details)
 */
 SELECT
-	id_produto AS id_produto,
-	SUM (quantidade) AS total_vendido
-FROM public.itens_pedido
-GROUP BY id_produto
-HAVING SUM (quantidade) >= 1000
+	product_id AS id_produto,
+	SUM (quantity) AS total_vendido
+FROM order_details
+GROUP BY product_id
+HAVING SUM (quantity) >= 1000
 ORDER BY total_vendido DESC;
 
 
@@ -160,10 +161,10 @@ Crie uma consulta usando um LEFT JOIN para mostrar o nome do
 produto, o nome do fornecedor e o país do fornecedor. (Utilize as tabelas
 products e suppliers) */
 SELECT
-	tp.nome_produto AS "Nome_Produto",
+	tp.product_name AS "Nome_Produto",
 	ts.company_name AS "Nome_Fornecedor",
 	ts.country AS "Pais_Fornecedor"
-FROM public.produtos tp
+FROM public.products tp
 LEFT JOIN public.suppliers ts
 	ON tp.supplier_id = ts.supplier_id;
 
@@ -181,13 +182,13 @@ cliente que mais efetuou pedidos para o que menos comprou na empresa.
 (Utilize as tabelas customers e orders)
 */
 SELECT 
-	tc.id_cliente AS "ID_Cliente",
-	tc.nome_empresa AS "Nome_Cliente",
-	COUNT (tor.id_pedido) AS "Total_Pedidos"
-FROM public.clientes tc
-LEFT JOIN public.pedidos tor
-	ON tc.id_cliente = tor.id_cliente
-GROUP BY tc.id_cliente, tc.nome_empresa
+	tc.customer_id AS "ID_Cliente",
+	tc.company_name AS "Nome_Cliente",
+	COUNT (tor.order_id) AS "Total_Pedidos"
+FROM public.customers tc
+LEFT JOIN public.orders tor
+	ON tc.customer_id = tor.customer_id
+GROUP BY tc.customer_id, tc.company_name
 ORDER BY "Total_Pedidos" DESC;
 
 
@@ -201,14 +202,14 @@ Altere o código do item A para retornar apenas esses clientes. (Utilize as
 tabelas customers e orders)
 */
 SELECT 
-	tc.id_cliente AS "ID_Cliente",
-	tc.nome_empresa AS "Nome_Cliente",
-	COUNT (tor.id_pedido) AS "Total_Pedidos"
-FROM public.clientes tc
-LEFT JOIN public.pedidos tor
-	ON tc.id_cliente = tor.id_cliente
-GROUP BY tc.id_cliente, tc.nome_empresa
-HAVING COUNT (tor.id_pedido) = '0';
+	tc.customer_id AS "ID_Cliente",
+	tc.company_name AS "Nome_Cliente",
+	COUNT (tor.order_id) AS "Total_Pedidos"
+FROM public.customers tc
+LEFT JOIN public.orders tor
+	ON tc.customer_id = tor.customer_id
+GROUP BY tc.customer_id, tc.company_name
+HAVING COUNT (tor.order_id) = '0';
 
 
 /*
@@ -222,16 +223,16 @@ Altere a consulta do item A para que retorne o resultado esperado.
 (Utilize as tabelas customers e orders)
 */
 SELECT 
-	tc.id_cliente AS "ID_Cliente",
-	tc.nome_empresa AS "Nome_Cliente",
-	tc.pais AS "Pais_Cliente",
-	COUNT (tor.id_pedido) AS "Total_Pedidos"
-FROM public.clientes tc
-LEFT JOIN public.pedidos tor
-	ON tc.id_cliente = tor.id_cliente
-WHERE tc.pais = 'Brazil'
-GROUP BY tc.id_cliente, tc.nome_empresa
-ORDER BY COUNT (tor.id_pedido) DESC;
+	tc.customer_id AS "ID_Cliente",
+	tc.company_name AS "Nome_Cliente",
+	tc.country AS "Pais_Cliente",
+	COUNT (tor.order_id) AS "Total_Pedidos"
+FROM public.customers tc
+LEFT JOIN public.orders tor
+	ON tc.customer_id = tor.customer_id
+WHERE tc.country = 'Brazil'
+GROUP BY tc.customer_id, tc.company_name
+ORDER BY COUNT (tor.order_id) DESC;
 
 
 /*
@@ -247,15 +248,15 @@ INNER JOINs nesta consulta. (Utilize as tabelas customers, orders e
 order_details)
 */
 SELECT 
-	tc.id_cliente,
-	tc.nome_empresa,
-	SUM (tod.preco_unitario * tod.quantidade) AS total_receita
-FROM public.clientes tc
-INNER JOIN public.pedidos tor
-	ON tc.id_cliente = tor.id_cliente
-	INNER JOIN public.itens_pedido tod
-		ON tor.id_pedido = tod.id_pedido
-GROUP BY tc.id_cliente, tc.nome_empresa;
+	tc.customer_id,
+	tc.company_name,
+	SUM (tod.unit_price * tod.quantity) AS total_receita
+FROM public.customers tc
+INNER JOIN public.orders tor
+	ON tc.customer_id = tor.customer_id
+	INNER JOIN public.order_details tod
+		ON tor.order_id = tod.order_id
+GROUP BY tc.customer_id, tc.company_name;
 
 	
 /*
@@ -280,10 +281,8 @@ GROUP BY tc.company_name, tor.order_date
 HAVING COUNT (tor.order_id) >1;
 
 
-
-
 /*
-Questão 5 - PAREI AQUI
+Questão 5
 A equipe financeira quer priorizar negociações com fornecedores que
 oferecem produtos com preços médios acima de R$30. Esses
 fornecedores serão tratados como parceiros estratégicos para produtos
@@ -302,6 +301,7 @@ INNER JOIN suppliers s
 	ON p.supplier_id = s.supplier_id
 GROUP BY s.company_name
 HAVING AVG (p.unit_price) > 30;
+
 
 /*
 Questão 6
@@ -329,7 +329,6 @@ HAVING COUNT (o.order_id) > 10
 ORDER BY total_pedidos DESC;
 
 
-
 /*
 Questão 7
 A equipe de logística está avaliando o desempenho das transportadoras
@@ -347,6 +346,7 @@ FROM orders o
 	RIGHT JOIN shippers s ON o.ship_via = s.shipper_id
 GROUP BY s.company_name
 ORDER BY total_pedidos DESC;
+
 
 /*
 Questão 8
@@ -369,6 +369,7 @@ INNER JOIN products p
 		ON p.category_id = c.category_id
 GROUP BY c.category_name
 ORDER BY media_vendas DESC;
+
 
 
 -- ========================
@@ -438,7 +439,7 @@ LEFT JOIN public.customers ct
 WHERE ct.country  IN ('USA', 'Mexico', 'Canada');
 
 SELECT * FROM public.vw_pedidos_america_norte;
---DROP VIEW public.vw_pedidos_america_norte;
+DROP VIEW public.vw_pedidos_america_norte;
 
 
 /*Questão 4
@@ -448,6 +449,14 @@ gargalos no processo de pedidos.
 Crie uma view chamada vw_ultimos_pedidos para atender a esse pedido.
 (Utilize a tabela orders)
 */
+CREATE OR REPLACE VIEW vw_ultimos_pedidos AS
+SELECT 
+	*
+FROM public.orders
+ORDER BY order_date DESC
+LIMIT 5;
+
+SELECT * FROM public.vw_ultimos_pedidos;
 
 
 /*Questão 5
@@ -459,7 +468,20 @@ Crie uma view chamada vw_clientes_receita_total para exibir esses
 clientes e suas respectivas receitas totais (soma de unit_price * quantity).
 (Utilize as tabelas customers, orders e orders_details)
 */
+CREATE OR REPLACE VIEW vw_clientes_receita_total AS
+SELECT
+	c.customer_id,
+	c.company_name,
+	SUM (od.unit_price * od.quantity) AS receita_total
+FROM public.customers c
+INNER JOIN public.orders o
+	ON c.customer_id = o.customer_id
+INNER JOIN public.order_details od
+	ON o.order_id = od.order_id
+GROUP BY c.customer_id, c.company_name
+HAVING SUM (od.unit_price * od.quantity) > 30000;
 
+SELECT * FROM vw_clientes_receita_total;
 
 
 /*Questão 6
@@ -471,7 +493,18 @@ Crie uma view chamada vw_top5_categorias para exibir as cinco
 categorias com maior quantidade de produtos. (Utilize as tabelas
 categories e products)
 */
+CREATE OR REPLACE VIEW vw_top5_categorias AS
+SELECT
+	c.category_name,
+	COUNT (p.product_id) AS total_produtos
+FROM public.categories c
+INNER JOIN public.products p
+	ON c.category_id = p.category_id
+GROUP BY c.category_name
+ORDER BY total_produtos DESC
+LIMIT 5;
 
+SELECT* FROM vw_top5_categorias;
 
 
 /*Questão 7-a
@@ -483,6 +516,17 @@ Crie uma view chamada vw_media_vendas_dos_paises que mostre os
 nomes dos países e suas respectivas medias de vendas (média de quantity
 * unit_price). (Utilize as tabelas orders e order_details)
 */
+CREATE OR REPLACE VIEW vw_media_vendas_dos_paises AS
+SELECT
+	o.ship_country,
+	AVG (od.quantity * od.unit_price) AS media_vendas
+FROM public.orders o
+INNER JOIN public.order_details od
+	ON o.order_id = od.order_id
+GROUP BY o.ship_country
+ORDER BY media_vendas DESC;
+
+SELECT * FROM vw_media_vendas_dos_paises;
 
 
 /*Questão 7-b
@@ -492,7 +536,10 @@ propósito: vw_media_vendas_por_pais.
 Faça essa alteração no banco de dados. (Não é necessário utilizar
 tabelas)
 */
+ALTER VIEW vw_media_vendas_dos_paises
+RENAME TO vw_media_vendas_por_pais;
 
+SELECT * FROM vw_media_vendas_por_pais;
 
 
 /*Questão 8
@@ -502,6 +549,15 @@ períodos passados, o que pode ajudar na projeção de vendas futuras.
 Crie uma view chamada vw_pedidos_1998 para listar esses pedidos.
 (Utilize a tabela orders)
 */
+CREATE OR REPLACE VIEW vw_pedidos_1998 AS
+SELECT
+	order_id,
+	customer_id,
+	order_date
+FROM public.orders
+WHERE order_date BETWEEN '1998-01-01' AND '1998-12-31';
+
+SELECT * FROM vw_pedidos_1998;
 
 
 /*Questão 9
@@ -516,3 +572,12 @@ vw_media_vendas_por_pais
 vw_pedidos_1998
 (Não é necessário utilizar tabelas)
 */
+
+DROP VIEW IF EXISTS vw_clientes_contato;
+DROP VIEW IF EXISTS vw_estoque_por_categoria;
+DROP VIEW IF EXISTS vw_pedidos_america_norte;
+DROP VIEW IF EXISTS vw_ultimos_pedidos;
+DROP VIEW IF EXISTS vw_clientes_receita_total;
+DROP VIEW IF EXISTS vw_top5_categorias;
+DROP VIEW IF EXISTS vw_media_vendas_por_pais;
+DROP VIEW IF EXISTS vw_pedidos_1998;
