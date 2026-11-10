@@ -36,8 +36,9 @@ O objetivo é documentar minha evolução ao longo do curso, consolidando os con
 | 08 | Banco de Dados Relacionais e Não Relacionais | ✅ |
 | 09 | Modelagem de Dados e SQL | ✅ |
 | 10 | SQL Avançado | ✅ |
-| 11 | Python e PostgreSQL | 🔄 Em andamento |
-
+| 11 | Python e PostgreSQL | ✅ |
+| 12 | Python e PostgreSQL | ✅ |
+| 13 | Python e PostgreSQL | ✅ |
 ---
 
 # 📂 Estrutura do Repositório

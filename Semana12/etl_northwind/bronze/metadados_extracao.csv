@@ -1,0 +1,2 @@
+camada,origem,tabela_base,linhas_extraidas,colunas_extraidas,pedidos_distintos,extraido_em
+bronze,northwind (PostgreSQL local),itens_pedido + pedidos + clientes + produtos,2155,8,830,28/09/2026 19:27:50
