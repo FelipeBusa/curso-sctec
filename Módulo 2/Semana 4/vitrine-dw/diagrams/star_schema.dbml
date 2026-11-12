@@ -1,0 +1,53 @@
+// Star Schema - loja Vitrine
+// Abra em https://dbdiagram.io -> cole este conteúdo -> ele desenha o diagrama.
+// Categoria fica EMBUTIDA em dim_produto (essa é a marca registrada do star).
+
+Table dim_tempo {
+  sk_tempo integer [pk]
+  data date
+  dia integer
+  mes integer
+  nome_mes text
+  trimestre integer
+  ano integer
+}
+
+Table dim_produto {
+  sk_produto integer [pk]
+  id_produto_origem integer
+  nome_produto text
+  categoria text [note: 'embutida aqui -- star']
+  marca text
+  preco_unitario decimal
+  custo_unitario decimal
+}
+
+Table dim_cliente {
+  sk_cliente integer [pk]
+  id_cliente_origem integer
+  nome_cliente text
+  cidade text
+  segmento text
+  data_cadastro date
+}
+
+Table dim_loja {
+  sk_loja integer [pk]
+  id_loja_origem integer
+  nome_loja text
+  cidade text
+  regiao text
+}
+
+Table fato_vendas {
+  sk_venda integer [pk]
+  id_venda_origem integer
+  sk_tempo integer [ref: > dim_tempo.sk_tempo]
+  sk_produto integer [ref: > dim_produto.sk_produto]
+  sk_cliente integer [ref: > dim_cliente.sk_cliente]
+  sk_loja integer [ref: > dim_loja.sk_loja]
+  quantidade integer
+  valor_unitario decimal [note: 'pode ser NULL -- 1 linha sinalizada de propósito']
+  desconto decimal
+  status_qualidade text
+}
