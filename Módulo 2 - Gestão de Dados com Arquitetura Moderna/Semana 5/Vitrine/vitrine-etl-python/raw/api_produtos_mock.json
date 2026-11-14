@@ -1,0 +1,19 @@
+[
+  {"produto_id": 101, "nome_produto": "Tênis Runner Pro",      "categoria": "Calçados",    "marca": "Nordic",   "preco_atual": 399.90},
+  {"produto_id": 102, "nome_produto": "Tênis Urbano Classic",  "categoria": "Calçados",    "marca": "Nordic",   "preco_atual": 289.90},
+  {"produto_id": 103, "nome_produto": "Sandália Trilha",       "categoria": "Calçados",    "marca": "Trailway", "preco_atual": 219.90},
+  {"produto_id": 104, "nome_produto": "Bota Impermeável",      "categoria": "Calçados",    "marca": "Trailway", "preco_atual": 459.90},
+  {"produto_id": 105, "nome_produto": "Jaqueta Corta-Vento",   "categoria": "Vestuário",   "marca": "Nordic",   "preco_atual": 329.90},
+  {"produto_id": 106, "nome_produto": "Camiseta Dry Fit",      "categoria": "Vestuário",   "marca": "Nordic",   "preco_atual": 99.90},
+  {"produto_id": 107, "nome_produto": "Calça Legging",         "categoria": "Vestuário",   "marca": "Flexa",    "preco_atual": 149.90},
+  {"produto_id": 108, "nome_produto": "Shorts Running",        "categoria": "Vestuário",   "marca": "Flexa",    "preco_atual": 119.90},
+  {"produto_id": 109, "nome_produto": "Moletom Canguru",       "categoria": "Vestuário",   "marca": "Nordic",   "preco_atual": 219.90},
+  {"produto_id": 110, "nome_produto": "Garrafa Térmica 1L",    "categoria": "Acessórios",  "marca": "Flexa",    "preco_atual": 89.90},
+  {"produto_id": 111, "nome_produto": "Mochila Trail 20L",     "categoria": "Acessórios",  "marca": "Trailway", "preco_atual": 249.90},
+  {"produto_id": 112, "nome_produto": "Boné Performance",      "categoria": "Acessórios",  "marca": "Nordic",   "preco_atual": 69.90},
+  {"produto_id": 113, "nome_produto": "Meia Compressão (par)", "categoria": "Acessórios",  "marca": "Flexa",    "preco_atual": 49.90},
+  {"produto_id": 114, "nome_produto": "Smartwatch Fit X",      "categoria": "Eletrônicos", "marca": "Pulse",    "preco_atual": 899.90},
+  {"produto_id": 115, "nome_produto": "Fone Bluetooth Sport",  "categoria": "Eletrônicos", "marca": "Pulse",    "preco_atual": 349.90},
+  {"produto_id": 116, "nome_produto": "Balança Inteligente",   "categoria": "Eletrônicos", "marca": "Pulse",    "preco_atual": 259.90},
+  {"produto_id": 117, "nome_produto": "Faixa Cardíaca BT",     "categoria": "Eletrônicos", "marca": "Pulse",    "preco_atual": 199.90}
+]

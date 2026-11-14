@@ -1,0 +1,42 @@
+-- =============================================================================
+-- Desafio -- Etapa 6: SCD Tipo 2 -- fecha a versão 2022, abre a versão 2026
+-- =============================================================================
+-- A população mudou de verdade entre o Censo 2022 e a estimativa 2026 (ver
+-- Etapa 5). Como queremos poder responder "qual era a população do estado
+-- X em 2022?" DEPOIS de carregar o número novo, não dá para sobrescrever --
+-- precisa de uma versão nova, preservando a antiga. Igual à Vitrine
+-- reclassificando o Smartwatch Fit X (sql/04_scd_tipo2_produto.sql): UPDATE
+-- fecha a versão antiga, INSERT cria a nova, tudo numa transação só.
+--
+-- Troque :sigla, :populacao_nova e :data_corte pelos valores de UM estado
+-- que a Etapa 5 (scripts/04_carga_incremental.py) apontou como alterado,
+-- repita para os demais. (Em produção isso seria um loop no Python --
+-- aqui, uma vez na mão primeiro ajuda a entender o padrão.)
+--
+-- TODO:
+-- 1. BEGIN;
+-- 2. UPDATE dw_populacao.dim_estado_scd2 SET data_fim = ..., registro_atual
+--    = false WHERE sigla = ... AND ano_referencia = 2022 AND registro_atual
+--    = true;
+-- 3. INSERT INTO dw_populacao.dim_estado_scd2 (id_estado, sigla,
+--    nome_estado, regiao, populacao, ano_referencia, data_inicio, data_fim,
+--    registro_atual) VALUES (..., 2026, ..., NULL, true); -- reaproveite
+--    id_estado/nome_estado/regiao da versão 2022 que você acabou de fechar.
+-- 4. COMMIT;
+-- 5. Escreva um SELECT final mostrando as TRÊS versões lado a lado (sigla,
+--    populacao, ano_referencia, data_inicio, data_fim, registro_atual),
+--    ordenado por data_inicio, para o estado que você versionou.
+--
+-- Use DATE '2026-01-01' como data de corte (data_fim da versão 2022 e
+-- data_inicio da versão 2026) -- é uma simplificação didática da data real
+-- de publicação da estimativa do IBGE.
+--
+-- Rode só depois de confirmar com a Etapa 5 que o estado realmente mudou
+-- (senão duplica uma versão igual à anterior).
+-- Rode com:
+--   psql -h localhost -U postgres -d vitrine -f sql/02_scd_tipo2_populacao.sql
+-- =============================================================================
+
+-- TODO: BEGIN; UPDATE ...; INSERT ...; COMMIT;
+
+-- TODO: SELECT final com as três versões
