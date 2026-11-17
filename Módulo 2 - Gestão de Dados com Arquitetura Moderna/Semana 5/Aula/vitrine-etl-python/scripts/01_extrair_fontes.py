@@ -20,12 +20,12 @@ API ou um site reais, só a origem dos bytes (arquivo local, não rede) muda.
 
 Rode com:  python3 scripts/01_extrair_fontes.py
 """
-import os
-from pathlib import Path
+import os # para ler as variaveis de ambiente
+from pathlib import Path #montar os caminhos do arquivos
 
 import pandas as pd
-from bs4 import BeautifulSoup
-from dotenv import load_dotenv
+from bs4 import BeautifulSoup # Ler HTML
+from dotenv import load_dotenv # ler o arquivo .env
 
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "raw"

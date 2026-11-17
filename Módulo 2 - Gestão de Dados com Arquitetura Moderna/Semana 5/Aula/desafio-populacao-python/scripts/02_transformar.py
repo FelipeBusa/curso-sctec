@@ -1,41 +1,62 @@
 """
-Desafio -- Etapa 2 (parte 1): transformação. Junta as TRÊS fontes da Etapa 1
--- o CSV (sigla, nome_estado, populacao_2010), a API (id/sigla/nome/regiao)
-e a Wikipédia (nome/população 2022/2026) -- numa linha por estado.
+Desafio -- Etapa 2 (parte 1): Transformação de dados.
 
-Duas estratégias de chave aqui:
-  - CSV com a API: por "sigla" -- é um código, já vem limpo nas duas fontes,
-    não precisa normalizar nada.
-  - API com a Wikipédia: por NOME do estado, normalizado (nome_normalizado,
-    igual à Vitrine, slide 18) -- strip() + lower() + sem acento. Normalize
-    sempre que a chave do merge for texto livre, não um código, mesmo
-    quando, como aqui, as duas fontes já estão bem escritas.
-
-Rode com:  python3 scripts/02_transformar.py
-Lê de:  as três funções de scripts/01_extrair_fontes.py
+Objetivo:
+Juntar as três fontes da Etapa 1 em um único DataFrame,
+com uma linha por unidade federativa.
+Estratégias de relacionamento:
+1. API + Wikipédia: nome do estado normalizado.
+2. API + CSV: sigla do estado.
+Execução: python scripts/02_transformar.py
+Fontes: scripts/01_extrair_fontes.py
 """
-import importlib.util
-import unicodedata
-from pathlib import Path
 
+# ============================================================
+# 1. IMPORTAÇÃO DAS BIBLIOTECAS
+# ============================================================
+import importlib.util #para importar o arquivo '01_extrair.ipynb'
+import unicodedata #remove acentos
+from pathlib import Path
 import pandas as pd
 
+
+# ============================================================
+# 2. CONFIGURAÇÕES E MAPEAMENTO DOS DIRETÓRIOS
+# ============================================================
 ROOT = Path(__file__).resolve().parent.parent
 
-_spec = importlib.util.spec_from_file_location("extrair_fontes", ROOT / "scripts" / "01_extrair_fontes.py")
+#localiza o arquivo '01_extrair_fontes.ipynb' e dá apelido de 'extrair_fontes'
+_spec = importlib.util.spec_from_file_location("extrair_fontes", ROOT / "scripts" / "01_extrair_fontes.py") 
+
+# traz as funções do outro código/arquivo '01_extrair_fontes.py'
 extrair_fontes = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(extrair_fontes)
 
 
+# ============================================================
+# 3. LIMPEZA E TRATAMENTO DOS DADOS
+# ============================================================
 def _sem_acento(texto: str) -> str:
-    nfkd = unicodedata.normalize("NFKD", texto)
-    return "".join(c for c in nfkd if not unicodedata.combining(c))
+   nfkd = unicodedata.normalize("NFKD", texto)
+   return "".join(caractere for caractere in nfkd if not unicodedata.combining(caractere)) #remonta o string descartando acentos
 
 
+# ============================================================
+# 4. INTEGRAÇÃO DAS FONTES DE DADOS
+# ============================================================
 def juntar_fontes(estados: pd.DataFrame, populacao: pd.DataFrame, populacao_2010: pd.DataFrame) -> pd.DataFrame:
-    """Junta estados (API) + populacao (Wikipédia, por nome normalizado) +
-    populacao_2010 (CSV, por sigla).
+   """Junta estados (API) + populacao (Wikipédia, por nome normalizado) + populacao_2010 (CSV, por sigla)."""
+   
+   estados = estados.copy()
+   populacao = populacao.copy()
+   populacao_2010 = populacao_2010.copy()
+   
+   # Normaliza o nome dos estados na API
+   estados["nome_normalizado"] = estados["nome"].apply(lambda nome: _sem_acento(nome.strip().lower()))
 
+   # Normaliza o nome dos estados na Wikipédia
+   populacao["nome_normalizado"] = populacao["estado"].apply(lambda nome: _sem_acento(nome.strip().lower()))
+   
     TODO:
     1. Crie "nome_normalizado" em estados e em populacao: strip() +
        lower() + _sem_acento() em cima do nome do estado (confira o nome da
