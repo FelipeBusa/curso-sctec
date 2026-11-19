@@ -32,7 +32,7 @@ from sqlalchemy import create_engine #criar a conexao com o Postgres
 ROOT = Path(__file__).resolve().parent.parent #raiz do projeto
 load_dotenv(ROOT / ".env") #pasta scripts/
 DB_PASSWORD = os.environ["DB_PASSWORD"] #carregar o DB_PASSWORD do .env
-CONEXAO_POSTGRES = f"postgresql+psycopg2://postgres:{DB_PASSWORD}@localhost:5432/ibge"  
+CONEXAO_POSTGRES = f"postgresql+psycopg2://postgres:{DB_PASSWORD}@localhost:5432/vitrine"  
 
 ANO_CENSO_2010 = 2010
 ANO_CENSO_2022 = 2022
