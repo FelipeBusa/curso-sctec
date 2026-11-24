@@ -27,7 +27,51 @@
 -- =============================================================================
 
 -- TODO: SELECT "antes"
+SELECT
+    sk_estado,
+    sigla,
+    nome_estado,
+    ano_referencia
+FROM dw_populacao.dim_estado_scd2
+WHERE sigla = 'PE'
+ORDER BY ano_referencia;
 
 -- TODO: INSERT ... ON CONFLICT (sigla, ano_referencia) DO UPDATE ...
+INSERT INTO dw_populacao.dim_estado_scd2 (
+    id_estado,
+    sigla,
+    nome_estado,
+    regiao,
+    populacao,
+    ano_referencia,
+    data_inicio,
+    data_fim,
+    registro_atual
+)
+SELECT
+    id_estado,
+    sigla,
+    'Pernambuco',
+    regiao,
+    populacao,
+    ano_referencia,
+    data_inicio,
+    data_fim,
+    registro_atual
+FROM dw_populacao.dim_estado_scd2
+WHERE sigla = 'PE'
+
+ON CONFLICT (sigla, ano_referencia)
+DO UPDATE SET
+    nome_estado = EXCLUDED.nome_estado;
+
 
 -- TODO: SELECT "depois"
+SELECT
+    sk_estado,
+    sigla,
+    nome_estado,
+    ano_referencia
+FROM dw_populacao.dim_estado_scd2
+WHERE sigla = 'PE'
+ORDER BY ano_referencia;

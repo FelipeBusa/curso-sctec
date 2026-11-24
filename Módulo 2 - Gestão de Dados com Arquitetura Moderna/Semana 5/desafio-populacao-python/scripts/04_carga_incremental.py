@@ -36,39 +36,76 @@ _spec.loader.exec_module(transformar)
 
 
 def estados_com_populacao_alterada(df_unificado: pd.DataFrame, engine) -> pd.DataFrame:
-    """Compara a população 2026 (raspada agora) com a população da versão
-    VIGENTE de cada estado em dw_populacao.dim_estado_scd2.
+   """
+   Compara a população 2026 com a versão vigente no PostgreSQL.
+   Retorna somente os estados cuja população foi alterada.
+   """
 
-    TODO:
-    1. Leia a versão vigente de cada estado:
-       SELECT sigla, populacao FROM dw_populacao.dim_estado_scd2
-       WHERE registro_atual = true
-    2. Faça merge(df_unificado, vigente, on="sigla") e filtre só as linhas
-       onde populacao_2026 (a nova) é DIFERENTE de populacao (a vigente).
-    3. Imprima quantos estados mudaram (deve ser a maioria -- a população
-       muda todo ano) e devolva esse subconjunto com as colunas: id, sigla,
-       nome, regiao, populacao_2026.
-    """
-    raise NotImplementedError("TODO: Etapa 5 -- estados_com_populacao_alterada()")
+   # 1. Consultar a população vigente no banco
+   query = text("""
+      SELECT
+         sigla,
+         populacao
+      FROM dw_populacao.dim_estado_scd2
+      WHERE registro_atual = true
+   """)
 
+   df_vigente = pd.read_sql(query, engine)
+
+   # 2. Comparar a população nova com a vigente
+   df_comparacao = df_unificado.merge(
+      df_vigente,
+      on="sigla",
+      how="inner"
+   )
+
+   # 3. Filtrar somente os estados com população diferente
+   df_alterados = df_comparacao[
+      df_comparacao["populacao_2026"] != df_comparacao["populacao"]
+   ].copy()
+
+   # 4. Selecionar as colunas necessárias
+   df_alterados = df_alterados[
+      ["id", "sigla", "nome", "regiao", "populacao_2026"]
+   ]
+
+   print(f"Estados com população alterada: {len(df_alterados)}")
+   return df_alterados
+    
 
 def avancar_controle(engine):
-    """TODO: UPDATE dw_populacao.controle_etl SET ultima_carga = now()
-    WHERE nome_pipeline = NOME_PIPELINE -- só depois que a Etapa 6 (SCD
-    Tipo 2) tiver gravado as novas versões com sucesso. Mesma regra da
-    Vitrine: o controle avança DEPOIS do sucesso, nunca antes."""
-    raise NotImplementedError("TODO: Etapa 5 -- avancar_controle()")
+   """
+   Atualiza o controle da ETL somente após o sucesso
+   da carga incremental no Data Warehouse.
+   """
 
+   query = text("""
+      UPDATE dw_populacao.controle_etl
+      SET ultima_carga = now()
+      WHERE nome_pipeline = :nome_pipeline
+   """)
+
+   with engine.begin() as conexao:
+      resultado = conexao.execute(
+         query,
+         {"nome_pipeline": NOME_PIPELINE}
+      )
+   print(f"Controle ETL atualizado: {resultado.rowcount} registro(s).")
 
 if __name__ == "__main__":
-    engine = create_engine(CONEXAO_POSTGRES)
-    populacao_2010 = transformar.extrair_fontes.extrair_populacao_2010_csv()
-    estados = transformar.extrair_fontes.extrair_estados_api()
-    populacao = transformar.extrair_fontes.extrair_populacao_wikipedia()
-    df_unificado = transformar.juntar_fontes(estados, populacao, populacao_2010)
+   engine = create_engine(CONEXAO_POSTGRES)
 
-    alterados = estados_com_populacao_alterada(df_unificado, engine)
-    print(f"\n{len(alterados)} estado(s) com população alterada para {ANO_ESTIMATIVA}:")
-    print(alterados[["sigla", "nome", "populacao_2026"]])
-    print("\nAgora use esses estados em sql/02_scd_tipo2_populacao.sql "
-          "(Etapa 6) para fechar a versão 2022 e abrir a versão 2026.")
+   populacao_2010 = transformar.extrair_fontes.extrair_populacao_2010_csv()
+   estados = transformar.extrair_fontes.extrair_estados_api()
+   populacao = transformar.extrair_fontes.extrair_populacao_wikipedia()
+
+   df_unificado = transformar.juntar_fontes(
+      estados, populacao, populacao_2010
+   )
+
+   alterados = estados_com_populacao_alterada(df_unificado, engine)
+
+   print(f"\n{len(alterados)} estado(s) com população alterada para {ANO_ESTIMATIVA}:")
+   print(alterados[["sigla", "nome", "populacao_2026"]])
+
+   avancar_controle(engine)

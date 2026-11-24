@@ -87,7 +87,7 @@ if __name__ == "__main__":
     estados = transformar.extrair_fontes.extrair_estados_api()
     populacao = transformar.extrair_fontes.extrair_populacao_wikipedia()
     df_unificado = transformar.juntar_fontes(estados, populacao, populacao_2010)
-
+    
     dim_estado_inicial = montar_dim_estado_inicial(df_unificado)
     engine = create_engine(CONEXAO_POSTGRES)
     carregar_dim_estado(dim_estado_inicial, engine)
