@@ -23,11 +23,12 @@ SELECT
 	ROUND(((v2026.populacao - v2022.populacao)::NUMERIC/ v2022.populacao) * 100,2) AS variacao_percentual
 FROM dw_populacao.dim_estado_scd2 v2022
 JOIN dw_populacao.dim_estado_scd2 v2026
-    ON v2022.sigla = v2026.sigla
+    ON v2022.sigla = v2026.sigla AND v2026.ano_referencia = 2026
+WHERE v2022.ano_referencia = 2022
 ORDER BY variacao_absoluta DESC
-LIMIT 1;
+LIMIT 15;
 
 
-
+-- consulta base
 SELECT * FROM dw_populacao.dim_estado_scd2
 ORDER BY sk_estado ASC; 
